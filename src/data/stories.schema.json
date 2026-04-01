@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/adventure-stories/story-library.schema.json",
+  "title": "AdventureStoriesLibrary",
+  "type": "object",
+  "required": ["version", "spines"],
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "spines": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/storySpine" }
+    }
+  },
+  "$defs": {
+    "storySpine": {
+      "type": "object",
+      "required": ["id", "titleTemplate", "paragraphs", "improv"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "tone": { "enum": ["gentle", "silly"] },
+        "titleTemplate": { "type": "string" },
+        "paragraphs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "improv": {
+          "type": "object",
+          "required": ["titleTemplate", "beats"],
+          "properties": {
+            "titleTemplate": { "type": "string" },
+            "beats": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string" }
+            },
+            "branches": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

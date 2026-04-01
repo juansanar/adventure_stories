@@ -1,0 +1,21 @@
+{
+  "plushPresets": [
+    { "id": "crab", "label": "Crab", "phrase": "the crab" },
+    { "id": "bear", "label": "Bear", "phrase": "the bear" },
+    { "id": "octopus", "label": "Octopus", "phrase": "the octopus" },
+    { "id": "lion", "label": "Lion", "phrase": "the lion" },
+    { "id": "bee", "label": "Bumble bee", "phrase": "the bumble bee" },
+    { "id": "bunny", "label": "Bunny", "phrase": "the bunny" },
+    { "id": "dino", "label": "Dinosaur", "phrase": "the dinosaur" }
+  ],
+  "settingPresets": [
+    { "id": "park", "label": "Park", "phrase": "the park" },
+    { "id": "beach", "label": "Beach", "phrase": "the beach" },
+    { "id": "forest", "label": "Forest", "phrase": "the forest" },
+    { "id": "rocket", "label": "Rocket ship", "phrase": "a rocket ship" },
+    { "id": "kitchen", "label": "Kitchen", "phrase": "the kitchen" },
+    { "id": "backyard", "label": "Backyard", "phrase": "the backyard" },
+    { "id": "library", "label": "Library", "phrase": "the library" },
+    { "id": "train", "label": "Little train", "phrase": "a little train" }
+  ]
+}

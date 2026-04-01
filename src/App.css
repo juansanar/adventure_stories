@@ -1,0 +1,300 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600&display=swap");
+
+.app {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.header {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-family: var(--heading);
+  font-weight: 600;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  letter-spacing: -0.02em;
+  color: var(--text-h);
+  margin: 0 0 0.5rem;
+}
+
+.lede {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 36rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem 1.35rem;
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.cardTitle {
+  font-family: var(--heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 1rem;
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 520px) {
+  .fieldGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fieldWide {
+  grid-column: 1 / -1;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.input {
+  font: inherit;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-h);
+}
+
+.input:focus {
+  outline: 2px solid var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.plushBlock {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.plushExtraField {
+  margin-top: 0.75rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.chip {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--chip);
+  color: var(--text-h);
+  cursor: pointer;
+}
+
+.chip:hover {
+  border-color: var(--accent);
+}
+
+.chipOn {
+  background: var(--chip-on);
+  border-color: var(--chip-border);
+  color: var(--text-h);
+}
+
+.settingRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.grow {
+  flex: 1;
+  min-width: 200px;
+}
+
+.modeRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.btn {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btnPrimary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.btnSecondary {
+  background: var(--accent-soft);
+  color: var(--text-h);
+  border-color: var(--chip-border);
+}
+
+.btnSecondary:hover:not(:disabled) {
+  filter: brightness(0.97);
+}
+
+.btnGhost {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text-h);
+}
+
+.btnGhost:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.output {
+  margin-top: 0.25rem;
+}
+
+.storyTitle {
+  font-family: var(--heading);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 1rem;
+}
+
+.storyBody p {
+  margin: 0 0 0.9rem;
+}
+
+.storyBody p:last-child {
+  margin-bottom: 0;
+}
+
+.beats {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.beats li {
+  margin-bottom: 0.5rem;
+}
+
+.beatsMuted {
+  color: var(--text-muted);
+}
+
+.subhead {
+  font-family: var(--heading);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0.5rem;
+  color: var(--text-h);
+}
+
+.outputActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 1.35rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.hint {
+  width: 100%;
+  margin: 0 0 0.25rem;
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+.footer {
+  margin-top: 2.5rem;
+  text-align: left;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  max-width: 36rem;
+}
+
+.footer p {
+  margin: 0;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .noPrint {
+    display: none !important;
+  }
+
+  .printArea {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .app {
+    max-width: 100%;
+    padding: 0;
+  }
+}
