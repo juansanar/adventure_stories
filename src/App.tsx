@@ -164,6 +164,7 @@ export default function App() {
   const generatingStatusRef = useRef<HTMLDivElement>(null);
   const storyOutputRef = useRef<HTMLElement>(null);
   const feedbackRef = useRef<HTMLDivElement>(null);
+  const aiStreamPreRef = useRef<HTMLPreElement>(null);
   /** Prevents overlapping runs before React re-renders disabled button state. */
   const aiGenerationLockRef = useRef(false);
 
@@ -222,6 +223,12 @@ export default function App() {
     }, 1000);
     return () => window.clearInterval(id);
   }, [aiBusy]);
+
+  useEffect(() => {
+    const el = aiStreamPreRef.current;
+    if (!el || !aiStreamText) return;
+    el.scrollTop = el.scrollHeight;
+  }, [aiStreamText]);
 
   const aiModelLoading =
     storySource === "onDevice" && llmStatus === "loading";
@@ -696,7 +703,12 @@ export default function App() {
                     </p>
                   ) : null}
                   {aiStreamText ? (
-                    <pre className="aiStreamingPre">{aiStreamText}</pre>
+                    <pre
+                      ref={aiStreamPreRef}
+                      className="aiStreamingPre"
+                    >
+                      {aiStreamText}
+                    </pre>
                   ) : null}
                 </div>
               )}

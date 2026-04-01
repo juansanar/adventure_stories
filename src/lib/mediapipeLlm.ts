@@ -45,7 +45,7 @@ export async function getLlmInference(modelPath: string): Promise<LlmInference> 
       delegate: "GPU",
       gpuOptions: { device },
     },
-    maxTokens: 640,
+    maxTokens: 512,
     topK: 40,
     temperature: 0.75,
     randomSeed: Math.floor(Math.random() * 2 ** 31),
@@ -64,15 +64,26 @@ export async function generateWithLlm(
   /** Do not call setOptions() with only sampler fields — MediaPipe can drop
    *  baseOptions.modelAssetPath and throw "No model asset provided." */
   let accumulated = "";
-  let streamBuf = "";
-  let streamRaf = 0;
-  const flushStreamBuf = () => {
-    streamRaf = 0;
-    if (streamBuf.length === 0 || !onPartial) return;
-    const out = streamBuf;
-    streamBuf = "";
+  /** Pending text not yet sent to UI (batched to limit React work). */
+  let pending = "";
+  let throttleId: ReturnType<typeof setTimeout> | null = null;
+  let sawFirstToken = false;
+
+  const STREAM_THROTTLE_MS = 24;
+
+  const flushPending = () => {
+    throttleId = null;
+    if (pending.length === 0 || !onPartial) return;
+    const out = pending;
+    pending = "";
     onPartial(out, false);
   };
+
+  const scheduleThrottle = () => {
+    if (throttleId !== null) return;
+    throttleId = window.setTimeout(flushPending, STREAM_THROTTLE_MS);
+  };
+
   const listener =
     onPartial !== undefined
       ? (partial: string, done: boolean) => {
@@ -84,19 +95,24 @@ export async function generateWithLlm(
                 : String(partial);
           accumulated += chunk;
           if (done) {
-            if (streamRaf) {
-              cancelAnimationFrame(streamRaf);
-              streamRaf = 0;
+            if (throttleId !== null) {
+              window.clearTimeout(throttleId);
+              throttleId = null;
             }
-            streamBuf += chunk;
-            flushStreamBuf();
+            pending += chunk;
+            flushPending();
             onPartial("", true);
             return;
           }
-          streamBuf += chunk;
-          if (!streamRaf) {
-            streamRaf = requestAnimationFrame(flushStreamBuf);
+          pending += chunk;
+          if (chunk.length === 0) return;
+          // First visible bytes: no wait for rAF / timer so the UI does not feel stuck.
+          if (!sawFirstToken) {
+            sawFirstToken = true;
+            flushPending();
+            return;
           }
+          scheduleThrottle();
         }
       : undefined;
   const returned = listener
