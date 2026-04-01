@@ -159,6 +159,205 @@
   font-size: 0.95rem;
 }
 
+.sourceBlock {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.aiPanel {
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.aiPanelText {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.aiPanelMono {
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 0.78rem;
+  word-break: break-all;
+}
+
+.aiStatus {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+}
+
+.aiStatusOk {
+  color: var(--accent);
+}
+
+.aiStatusErr {
+  color: #b42318;
+}
+
+@media (prefers-color-scheme: dark) {
+  .aiStatusErr {
+    color: #fca5a5;
+  }
+}
+
+.aiStreaming {
+  margin-top: 0.75rem;
+}
+
+.aiStreamingLabel {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.aiStreamingPre {
+  margin: 0;
+  max-height: 12rem;
+  overflow: auto;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  display: inline-block;
+  box-sizing: border-box;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+  vertical-align: middle;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+    border-color: var(--accent);
+    opacity: 0.85;
+  }
+}
+
+.btnSpinner {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.aiPanelSpinner {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.btnWithSpinner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.aiStatusRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.generatingSpinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.12rem;
+  border-width: 3px;
+}
+
+.generatingCard {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  background: linear-gradient(
+    135deg,
+    var(--accent-soft) 0%,
+    var(--card) 55%
+  );
+}
+
+.generatingCardInner {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.generatingCardBody {
+  min-width: 0;
+  flex: 1;
+}
+
+.generatingCardTitle {
+  margin: 0 0 0.35rem;
+  font-family: var(--heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.generatingCardMeta {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.generatingCardMeta strong {
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.outputPending {
+  opacity: 0.48;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.actionsHint {
+  margin: 0.5rem 0 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.actionsHintSteps {
+  margin-top: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-h);
+}
+
+.statusBanner {
+  margin: 0.75rem 0 0;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid var(--chip-border);
+  background: var(--chip-on);
+  color: var(--text-h);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
@@ -210,6 +409,10 @@
 
 .output {
   margin-top: 0.25rem;
+}
+
+#story-output {
+  scroll-margin-top: 1rem;
 }
 
 .storyTitle {

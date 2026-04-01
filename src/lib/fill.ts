@@ -54,7 +54,8 @@ export function formatPlushPhrase(name: string): string {
 }
 
 export function joinPlush(phrases: string[]): string {
-  const cleaned = phrases.map((s) => s.trim()).filter(Boolean);
+  const list = Array.isArray(phrases) ? phrases : [];
+  const cleaned = list.map((s) => s.trim()).filter(Boolean);
   if (cleaned.length === 0) return PLACEHOLDER.plush;
   if (cleaned.length === 1) return cleaned[0];
   if (cleaned.length === 2) return `${cleaned[0]} and ${cleaned[1]}`;

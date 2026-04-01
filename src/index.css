@@ -57,3 +57,46 @@ body {
 #root {
   min-height: 100svh;
 }
+
+.errorBoundary {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+  font-family: var(--sans);
+}
+
+.errorBoundaryTitle {
+  font-family: var(--heading);
+  font-size: 1.35rem;
+  margin: 0 0 0.75rem;
+  color: var(--text-h);
+}
+
+.errorBoundaryText {
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.errorBoundaryPre {
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-size: 0.85rem;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.errorBoundaryBtn {
+  margin-top: 1rem;
+  font: inherit;
+  font-weight: 600;
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: var(--accent);
+  color: #fff;
+}
