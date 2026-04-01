@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Large MediaPipe / LiteRT LM weights (download locally; see public/models/README.md)
+public/models/*.litertlm
+public/models/.cache
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
