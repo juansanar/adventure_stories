@@ -40,7 +40,7 @@ import "./App.css";
 const storyLibrary = storyLibraryJson as StoryLibrary;
 const catalog = catalogJson as ContentCatalog;
 
-type StorySource = "template" | "onDevice";
+type StorySource = "template" | "onDevice" | "gemini";
 type LlmLoadStatus = "idle" | "loading" | "ready" | "error";
 
 function newPickSalt(): string {
@@ -123,7 +123,11 @@ function initialFromUrl(): {
     q.mode === "improv" || q.mode === "story" ? q.mode : "story";
 
   const storySource: StorySource =
-    q.source === "ai" ? "onDevice" : "template";
+    q.source === "ai"
+      ? "onDevice"
+      : q.source === "gemini"
+        ? "gemini"
+        : "template";
 
   return {
     friends,
@@ -201,7 +205,7 @@ export default function App() {
   }, [storySource]);
 
   useEffect(() => {
-    if (storySource === "template") {
+    if (storySource !== "onDevice") {
       aiGenerationLockRef.current = false;
       releaseLlmInference();
       setLlmStatus("idle");
@@ -283,7 +287,12 @@ export default function App() {
       place: isSettingCustom ? "custom" : settingPresetId.trim(),
       setting: isSettingCustom ? settingCustomText.trim() : "",
       mode,
-      source: storySource === "onDevice" ? "ai" : "",
+      source:
+        storySource === "onDevice"
+          ? "ai"
+          : storySource === "gemini"
+            ? "gemini"
+            : "",
     });
   }, [
     friends,
@@ -419,6 +428,88 @@ export default function App() {
     }
   }, [fillCtx, llmStatus, mode, syncUrl]);
 
+  const runGenerateGemini = useCallback(async () => {
+    if (aiGenerationLockRef.current) {
+      setFeedback("Already writing a story — wait for it to finish.");
+      return;
+    }
+
+    aiGenerationLockRef.current = true;
+    setAiBusy(true);
+    setLlmError(null);
+    setFeedback(null);
+    setAiStreamText("");
+    setCopyHint(null);
+    await yieldToUi();
+    await yieldToUi();
+
+    try {
+      const prompt = buildLlmPrompt(fillCtx, mode);
+      const resp = await fetch("/api/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
+      });
+
+      if (!resp.ok) {
+        const msg = await resp.text().catch(() => "");
+        throw new Error(`Gemini request failed (${resp.status}): ${msg}`);
+      }
+
+      const data = (await resp.json().catch(() => ({}))) as
+        | { text?: string }
+        | undefined;
+      const fullText = data?.text ?? "";
+
+      const text = normalizeLlmText(fullText);
+      const screened = screenAiOutput(text);
+      if (!screened.ok) {
+        setLlmError(screened.reason);
+        setFeedback(screened.reason);
+        return;
+      }
+
+      try {
+        if (mode === "improv") {
+          const parsed = parseAiImprov(text);
+          setOutput({
+            spineId: "ai-improv",
+            title: parsed.title,
+            body: "",
+            improvTitle: parsed.title,
+            improvBeats: parsed.beats,
+            improvBranches: parsed.branches,
+          });
+        } else {
+          const parsed = parseAiStory(text);
+          setOutput({
+            spineId: "ai-story",
+            title: parsed.title,
+            body: parsed.body,
+            improvTitle: "",
+            improvBeats: [],
+            improvBranches: [],
+          });
+        }
+        setLastSpineId(undefined);
+        syncUrl();
+      } catch (parseErr) {
+        const pe =
+          parseErr instanceof Error ? parseErr.message : String(parseErr);
+        const parseMsg = `The model returned text we could not turn into a story. ${pe}`;
+        setLlmError(parseMsg);
+        setFeedback(parseMsg);
+      }
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      setLlmError(msg);
+      setFeedback(msg);
+    } finally {
+      aiGenerationLockRef.current = false;
+      setAiBusy(false);
+    }
+  }, [fillCtx, mode, syncUrl]);
+
   const handleCreateStory = useCallback(() => {
     if (storySource === "template") {
       flushSync(() => {
@@ -427,8 +518,12 @@ export default function App() {
       setFeedback("Story ready — scroll down to read it.");
       return;
     }
-    void runGenerateAi();
-  }, [runGenerateAi, runGenerateTemplate, storySource]);
+    if (storySource === "onDevice") {
+      void runGenerateAi();
+      return;
+    }
+    void runGenerateGemini();
+  }, [runGenerateAi, runGenerateGemini, runGenerateTemplate, storySource]);
 
   const handleAnotherVersion = useCallback(() => {
     if (!output) return;
@@ -438,9 +533,19 @@ export default function App() {
       });
       setFeedback("New version ready — scroll down to read it.");
     } else {
-      void runGenerateAi();
+      if (storySource === "onDevice") {
+        void runGenerateAi();
+        return;
+      }
+      void runGenerateGemini();
     }
-  }, [output, runGenerateAi, runGenerateTemplate, storySource]);
+  }, [
+    output,
+    runGenerateAi,
+    runGenerateGemini,
+    runGenerateTemplate,
+    storySource,
+  ]);
 
   const handleCopy = async () => {
     if (!output) return;
@@ -475,12 +580,10 @@ export default function App() {
     );
   };
 
-  const createDisabled =
-    storySource === "onDevice" && aiBusy;
-  const createTitle =
-    storySource === "onDevice" && aiBusy
-      ? "Still generating — look for the progress card below."
-      : undefined;
+  const createDisabled = aiBusy;
+  const createTitle = aiBusy
+    ? "Still generating — look for the progress card below."
+    : undefined;
 
   return (
     <div className="app">
@@ -648,6 +751,15 @@ export default function App() {
                   onChange={() => setStorySource("onDevice")}
                 />
                 On-device AI (WebGPU + local model)
+              </label>
+              <label className="radio">
+                <input
+                  type="radio"
+                  name="source"
+                  checked={storySource === "gemini"}
+                  onChange={() => setStorySource("gemini")}
+                />
+                Gemini (cloud)
               </label>
             </div>
           </div>
@@ -904,6 +1016,13 @@ export default function App() {
             to this app&apos;s server. Shared links encode cast and setting in the
             URL hash (not plain text); anyone with the link can still decode it.
             Story text is not in the link unless you paste it elsewhere.
+          </p>
+        ) : storySource === "gemini" ? (
+          <p>
+            Shared links store cast and setting in an encoded URL hash. When
+            you generate with Gemini (cloud), your prompt and generated story
+            are sent to your backend and then to Google&apos;s Gemini API. Your
+            story text is not stored in the link.
           </p>
         ) : (
           <p>

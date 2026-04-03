@@ -1,11 +1,12 @@
+# Primary hosting for Gemini mode is Cloud Run (see deploy-cloud-run.yml).
+# Keep this workflow for optional static hosting only — run manually when needed.
+#
 # If deploy fails with: branch "main" is not allowed to deploy to github-pages —
 # Repo → Settings → Environments → github-pages → Deployment branches and tags:
 # allow "main" (e.g. "Selected branches" → add main, or "All branches").
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: [main, master]
   workflow_dispatch:
 
 permissions:

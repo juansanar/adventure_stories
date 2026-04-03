@@ -45,10 +45,15 @@ Do not add any lines before TITLE:.`;
 
   const task = `Write one original short adventure story using the cast and setting.
 
+Length (important):
+- After TITLE, the story body should be about 250–350 words for read-aloud (several minutes aloud).
+- Write 4–5 short paragraphs (not 1–2), each a few sentences, separated by blank lines.
+- Do not stop after TITLE alone, and do not answer with only one sentence for the whole story.
+
 Output format:
 TITLE: (one line only)
 (then one blank line)
-(then 3–5 short paragraphs for read-aloud, separated by blank lines)
+(then the full story paragraphs as above)
 
 Do not use markdown headings or bullet lists in the story body. Do not add text before TITLE:.`;
   return wrapGemmaTurn(

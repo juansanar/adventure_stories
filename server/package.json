@@ -1,0 +1,15 @@
+{
+  "name": "adventure_stories_server",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "dependencies": {
+    "@google/genai": "^1.48.0",
+    "express": "^4.19.2"
+  }
+}
+
