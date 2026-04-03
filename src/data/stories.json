@@ -1,553 +1,303 @@
 {
-  "version": 1,
+  "version": 2,
   "spines": [
     {
       "id": "spine-001",
-      "tags": ["outdoor", "helping"],
-      "tone": "gentle",
-      "titleTemplate": "{{friend1}}, {{friend2}}, and {{plush}} at {{setting}}",
+      "tags": ["indoor", "silly", "escalation"],
+      "tone": "silly",
+      "titleTemplate": "The unstoppable sneeze at {{setting}}",
       "paragraphs": [
-        "One bright morning, {{friend1}} and {{friend2}} went to {{setting}} with {{family}}. {{plush}} came along, riding in a backpack like a tiny captain.",
-        "At {{setting}}, they found a puddle that looked like a mirror. {{friend1}} jumped over it. {{friend2}} jumped too. {{plush}} pretended to swim in the air, and everyone laughed.",
-        "When a little breeze blew a hat sideways, {{family}} helped fix it. Then they all sat on a soft blanket and shared a snack. {{plush}} got the smallest pretend bite, which was just right.",
-        "They walked home holding hands, sleepy-happy. {{friend1}} whispered, “Same adventure tomorrow?” And {{setting}} seemed to wave goodbye."
+        "{{friend1}} felt a tickle in their nose at {{setting}}. A tiny tickle. A wiggly tickle. Then— AAAH-CHOO!— and every cushion on the couch flipped upside down.",
+        "\"That was a big one!\" said {{friend2}}. But {{friend1}}'s nose was not finished. AAAH-CHOOOO!— the curtains blew sideways, the books jumped off the shelf, and {{plush}} flew across the room like a furry little rocket.",
+        "{{family}} brought a tissue. But before {{friend1}} could grab it— AAAAAAH-CHOOOOOOO!— the biggest sneeze yet! The tissue flew out the window, the lampshade spun like a top, and {{plush}} landed on {{friend2}}'s head like the world's silliest hat.",
+        "Then {{friend1}}'s nose went quiet. Just like that. \"I think I'm done,\" said {{friend1}}. They blew their nose very softly, and everyone clapped. {{plush}} took a bow from the top of {{friend2}}'s head. That was, by far, the best sneeze {{setting}} had ever seen."
       ],
       "improv": {
-        "titleTemplate": "Tiny adventure: {{setting}}",
+        "titleTemplate": "Sneeze storm",
         "beats": [
-          "Arrive at {{setting}} with {{friend1}}, {{friend2}}, and {{plush}}.",
-          "A small, silly problem: wind, a wobbly shoe, or a missing sock.",
-          "{{family}} helps in a gentle way.",
-          "Cozy ending: snack, hug, or quiet game."
+          "A tiny sneeze at {{setting}} — something small flies.",
+          "A bigger sneeze — something bigger goes flying.",
+          "The BIGGEST sneeze — total silly chaos.",
+          "Sudden calm. Blow nose gently. Everyone claps."
         ],
         "branches": [
-          "If they want “more”: add a second tiny problem that repeats the teamwork joke.",
-          "If they want “sillier”: {{plush}} talks only in beeps or whispers."
+          "If they want \"more\": each sneeze has a different sound effect the kids invent.",
+          "If they want calmer: the sneezes only ruffle {{plush}}'s fur."
         ]
       }
     },
     {
       "id": "spine-002",
-      "tags": ["beach", "teamwork"],
-      "tone": "gentle",
-      "titleTemplate": "The gentle wave at {{setting}}",
+      "tags": ["kitchen", "cooking", "escalation"],
+      "tone": "silly",
+      "titleTemplate": "The pudding that would not stop at {{setting}}",
       "paragraphs": [
-        "{{friend1}} and {{friend2}} built a lumpy sand tower at {{setting}}. {{plush}} guarded the top like a brave lighthouse keeper.",
-        "A wave came close— not scary, just splashy. The tower wobbled. {{friend1}} steadied one side. {{friend2}} steadied the other. {{family}} cheered like a quiet drum.",
-        "They rebuilt the tower a little farther back, which was a clever idea. {{plush}} got a dry towel cape. The sun felt warm on everyone’s shoulders.",
-        "On the way home, {{friend1}} said the tower was still a success because they tried together. {{friend2}} agreed. {{plush}} did a happy flop."
+        "{{friend1}} and {{friend2}} were helping {{family}} make pudding at {{setting}}. They stirred once. They stirred twice. They stirred three times, and the pudding started to grow.",
+        "\"Stop growing!\" said {{friend1}}. The pudding did not stop. It filled the bowl. It filled the pot. It oozed over the table like a very slow, very wobbly, chocolate river.",
+        "\"Quick, eat it!\" said {{friend2}}. So they ate, and they ate, and they ate. {{family}} ate with a big spoon. {{friend1}} ate with a medium spoon. {{plush}} ate with a pretend spoon, which was no help at all.",
+        "Finally the pudding stopped growing. There was chocolate on every nose, every elbow, and both of {{plush}}'s ears. {{family}} looked around and said, \"Well. That was dinner.\" And everyone agreed it was the best dinner they ever had."
       ],
       "improv": {
-        "titleTemplate": "Sand and teamwork",
+        "titleTemplate": "Unstoppable pudding",
         "beats": [
-          "Build something simple at {{setting}}.",
-          "A soft challenge: water, wind, or a wobble.",
-          "Everyone helps; no one is blamed.",
-          "Rebuild or adapt, then celebrate the try."
+          "Stir something at {{setting}} — it starts growing.",
+          "It overflows — try to contain it, fail hilariously.",
+          "Everyone eats as fast as they can — {{plush}} pretends to help.",
+          "Pudding stops. Messy faces. Best meal ever."
         ],
         "branches": [
-          "If they want “more”: a seagull wants to be the official judge.",
-          "If they want calmer: skip the wave; use a kite string instead."
+          "If they want \"more\": the pudding changes flavor each time someone stirs.",
+          "If they want calmer: the pudding only overflows the bowl a tiny bit."
         ]
       }
     },
     {
       "id": "spine-003",
-      "tags": ["rocket", "curiosity"],
+      "tags": ["bedtime", "silly", "drama"],
       "tone": "silly",
-      "titleTemplate": "{{plush}}’s {{setting}} countdown",
+      "titleTemplate": "{{plush}} says NO",
       "paragraphs": [
-        "{{friend1}} and {{friend2}} climbed into {{setting}} that was really a cardboard rocket with shiny stickers. {{family}} was Mission Control with a spoon and a cereal box.",
-        "{{plush}} pressed pretend buttons: beep, boop, beep. The rocket hummed (that was {{friend2}} humming). {{friend1}} looked out the window at the ceiling stars.",
-        "They “flew” past the moon (a lamp), waved at Mars (a red ball), and did a slow loop around Saturn (a hula hoop on the floor).",
-        "Landing was soft: pillows. {{family}} opened the hatch with a dramatic “Welcome home, explorers!” {{plush}} fell asleep mid-cheer, which is how you know it was a good mission."
+        "It was time for bed, but {{plush}} said NO. Not a quiet no. A big, stuffed-animal, full-body NO. {{friend1}} tried to pick {{plush}} up, but {{plush}} went completely flat like a pancake.",
+        "\"Just one story?\" said {{friend2}}. \"NO,\" said {{plush}} (well, {{friend2}} said it for {{plush}}, but in a very grumpy voice). {{family}} offered warm milk. {{plush}} turned around and faced the wall, which was very dramatic for someone with no legs to stomp.",
+        "So {{friend1}} got into bed without {{plush}}. And {{friend2}} got into bed without {{plush}}. And they closed their eyes and started to snore— very fake, very loud snores.",
+        "And wouldn't you know it— {{plush}} crawled right into the middle of the bed, curled up between {{friend1}} and {{friend2}}, and fell asleep first. Because that is what happens when you say NO to bedtime: you get so tired from saying it that sleep sneaks up and catches you anyway."
       ],
       "improv": {
-        "titleTemplate": "Cardboard mission",
+        "titleTemplate": "The great refusal",
         "beats": [
-          "Pretend {{setting}} is real; name three “instruments.”",
-          "Visit two silly places in the house or yard.",
-          "One gentle bump: lost sticker, crooked fin, sleepy alien.",
-          "Land safe; snack debrief."
+          "{{plush}} refuses bedtime dramatically.",
+          "{{friend1}} and {{friend2}} try bribes: story, milk, song.",
+          "Everyone gives up and goes to bed without {{plush}}.",
+          "{{plush}} sneaks in and falls asleep first."
         ],
         "branches": [
-          "If they want “more”: an alien is actually a cat under a blanket.",
-          "If they want “faster”: only 10-second hops between planets."
+          "If they want \"more\": {{plush}} hides in three increasingly obvious spots before giving in.",
+          "If they want calmer: {{plush}} just needs one extra hug to say yes."
         ]
       }
     },
     {
       "id": "spine-004",
-      "tags": ["forest", "lost-found"],
-      "tone": "gentle",
-      "titleTemplate": "The ribbon path at {{setting}}",
+      "tags": ["outdoor", "wind", "chase"],
+      "tone": "silly",
+      "titleTemplate": "The hat that blew to {{setting}}",
       "paragraphs": [
-        "In {{setting}}, {{friend1}} tied a ribbon on a tree so they could find the way back. {{friend2}} tied another ribbon a little farther on. {{plush}} held the ribbon spool like treasure.",
-        "They heard a bird that sounded like a question mark. They saw a log that looked like a bench. {{family}} pointed out three safe things: moss, ferns, and a friendly trail marker.",
-        "A glove had fallen on the path—not theirs. {{friend1}} placed it on a stump in case the owner returned. {{friend2}} drew a tiny arrow with a stick. Kindness felt like part of the hike.",
-        "They followed the ribbons home. {{plush}} got carried when legs were tired. At the end, hot cocoa waited, and the forest felt like a friend, not a maze."
+        "The wind grabbed {{family}}'s hat right off their head and threw it into the sky like a frisbee. \"My hat!\" cried {{family}}. So {{friend1}}, {{friend2}}, and {{plush}} ran after it, all the way to {{setting}}.",
+        "They looked left. No hat. They looked right. No hat. They looked UP— and there it was, sitting on top of a very tall bush, looking extremely pleased with itself.",
+        "{{friend1}} reached up. Too short. {{friend2}} stood on tippy-toes. Still too short. They stacked {{plush}} on top of {{friend2}}'s head for extra height, which was a terrible idea but a wonderful try.",
+        "Then the wind blew one more time— WHOOOOSH— and the hat landed right on {{plush}}'s head, perfectly. {{plush}} looked magnificent. {{family}} laughed so hard they sat down. And they all walked home, with {{plush}} wearing the hat like the fanciest explorer in the whole entire world."
       ],
       "improv": {
-        "titleTemplate": "Trail markers",
+        "titleTemplate": "Chase that hat",
         "beats": [
-          "Set a simple rule so nobody gets lost in {{setting}}.",
-          "Notice three gentle nature details.",
-          "A small lost item; leave it safe for someone else.",
-          "Return home to warmth."
+          "Wind steals {{family}}'s hat — everyone chases it to {{setting}}.",
+          "Hat is spotted in a hard-to-reach spot.",
+          "Three silly attempts to get it — each one fails funnier.",
+          "Wind solves the problem itself — hat lands on {{plush}}."
         ],
         "branches": [
-          "If they want “more”: follow animal tracks that are really bike tires.",
-          "If they want calmer: no lost item; only pretty rocks."
+          "If they want \"more\": the hat lands on three different animals before {{plush}} catches it.",
+          "If they want calmer: the wind gently drops the hat at their feet."
         ]
       }
     },
     {
       "id": "spine-005",
-      "tags": ["kitchen", "cooking"],
+      "tags": ["indoor", "silly", "topsy-turvy"],
       "tone": "silly",
-      "titleTemplate": "The pancake planet at {{setting}}",
+      "titleTemplate": "The backwards day at {{setting}}",
       "paragraphs": [
-        "{{friend1}} and {{friend2}} helped at {{setting}} by mixing a bowl of sunshine-colored batter. {{plush}} wore a napkin cape and called it a chef’s flag.",
-        "{{family}} flipped a pancake that was almost perfectly round. {{friend1}} counted to three for sprinkles. {{friend2}} arranged fruit like a smiley face.",
-        "One pancake was a little funny-shaped. Nobody minded. They called it “The Cloud That Wanted to Be a Star.” {{plush}} got a tiny taste of banana.",
-        "They ate together at the table, feet swinging. {{friend1}} said syrup was sticky magic. {{friend2}} agreed. {{family}} opened the window to let the nice smells visit the neighbors."
+        "\"Let's do everything BACKWARDS!\" said {{friend1}} at {{setting}}. So they walked backwards. They talked backwards. {{friend2}} tried to eat a cracker backwards and just got crumbs up their nose.",
+        "{{family}} said \"Good morning!\" at lunchtime. {{friend2}} put shoes on their hands. {{plush}} wore a bowl for a hat and a hat for a bowl, which is surprisingly hard for a stuffed animal.",
+        "Then {{friend1}} tried to tell a story backwards: \"The end. Happily ever after, they lived. A dragon found they. Time upon Once.\" {{friend2}} laughed so hard they fell over forwards, which was actually backwards on Backwards Day.",
+        "By the end, nobody remembered which way was backwards and which way was forwards. So they just flopped on the floor in a heap and laughed until their tummies hurt. {{plush}} declared Backwards Day a great success — or a sseccus taerg, if you prefer."
       ],
       "improv": {
-        "titleTemplate": "Cooking together",
+        "titleTemplate": "Everything backwards",
         "beats": [
-          "Pick one simple food task at {{setting}}.",
-          "A tiny mishap: drip, lump, or wobble—fixed with teamwork.",
-          "Name the funny food.",
-          "Eat together; compliment the effort, not perfection."
+          "Declare Backwards Day at {{setting}}. Walk backwards first.",
+          "Try eating, talking, and dressing backwards — each one sillier.",
+          "Tell a story backwards — dissolve into giggles.",
+          "Give up figuring out which way is which. Laugh in a pile."
         ],
         "branches": [
-          "If they want “more”: {{plush}} demands a cooking show voice.",
-          "If they want healthier: fruit rockets instead of pancakes."
+          "If they want \"more\": {{plush}} is the backwards referee and judges everything.",
+          "If they want calmer: only walk backwards; everything else stays normal."
         ]
       }
     },
     {
       "id": "spine-006",
-      "tags": ["park", "sharing"],
-      "tone": "gentle",
-      "titleTemplate": "The swing song at {{setting}}",
+      "tags": ["kitchen", "mystery", "cumulative"],
+      "tone": "silly",
+      "titleTemplate": "Who keeps eating the bananas at {{setting}}?",
       "paragraphs": [
-        "At {{setting}}, {{friend1}} pushed {{friend2}} on the swing in a steady rhythm: whoosh… pause… whoosh. {{plush}} sat in the baby swing with a seatbelt of scarf.",
-        "A duck wandered by, unconcerned, like a park supervisor. {{family}} shared crackers from a bag, making sure crumbs went to birds, not shoes.",
-        "{{friend2}} offered a turn without being asked. {{friend1}} said thank you in a big voice. {{plush}} clapped with soft paws.",
-        "They left when cheeks were pink, not when the fun was gone—because stopping while happy is a kind of magic too."
+        "There were five bananas on the table at {{setting}} in the morning. By lunchtime there were four. By snack time there were three. \"WHO KEEPS EATING THE BANANAS?\" said {{family}}.",
+        "{{friend1}} said, \"Not me! Ask {{friend2}}.\" {{friend2}} said, \"Not me! Ask {{plush}}.\" {{plush}} said nothing, because {{plush}} is a stuffed animal. But {{plush}} was looking very suspicious.",
+        "They set a trap: one banana on a plate with a little bell tied to it. They waited. And waited. And then— DING!— {{friend1}} and {{friend2}} jumped out and found… {{family}}, tiptoeing away with the banana and a very guilty face.",
+        "\"I can't help it,\" said {{family}}. \"They're delicious.\" Everyone laughed until they wheezed. {{plush}} got a tiny banana sticker as a reward for being the only one who wasn't suspicious. And from that day on, they hid one banana just for {{family}}, because sharing a secret snack is the kindest kind of mystery."
       ],
       "improv": {
-        "titleTemplate": "Taking turns",
+        "titleTemplate": "Banana detective",
         "beats": [
-          "Start at {{setting}} with a simple game.",
-          "Practice turn-taking with {{friend1}} and {{friend2}}.",
-          "{{family}} models patience.",
-          "End before meltdown—leave on a high note."
+          "Bananas keep disappearing at {{setting}} — someone notices.",
+          "Everyone blames the next person. {{plush}} looks suspicious.",
+          "Set a trap with a bell. Wait dramatically.",
+          "Surprise culprit — {{family}}! Laugh and share."
         ],
         "branches": [
-          "If they want “more”: a line forms for the slide; everyone counts.",
-          "If they want calmer: cloud-watching instead of swings."
+          "If they want \"more\": the bananas are replaced with increasingly silly fruits each round.",
+          "If they want calmer: only one banana goes missing and {{family}} confesses right away."
         ]
       }
     },
     {
       "id": "spine-007",
-      "tags": ["train", "sounds"],
+      "tags": ["outdoor", "rain", "escalation"],
       "tone": "silly",
-      "titleTemplate": "Click-clack to {{setting}}",
+      "titleTemplate": "The enormous enormous puddle at {{setting}}",
       "paragraphs": [
-        "{{friend1}}, {{friend2}}, and {{family}} rode {{setting}} to a pretend city called Lunchtown. {{plush}} had a window seat and narrated everything: “Tree! Dog! Another tree!”",
-        "The seats went bump-bump gently. {{friend2}} made a quiet choo-choo under their breath. {{friend1}} tapped a rhythm on their knee.",
-        "A conductor’s voice said the next stop. {{family}} helped everyone hold hands when standing up. Safety first, adventure second.",
-        "They arrived back home with stories in their pockets. {{plush}} fell asleep mid-sentence, which is the best review a train can get."
+        "It rained at {{setting}}. Not a lot. Just enough to make one puddle. But oh, what a puddle. It was enormous. It was ENORMOUS. It was the most enormous puddle anyone had ever seen in the history of puddles.",
+        "{{friend1}} walked around it. Took forever. {{friend2}} tried to jump over it. Didn't make it. {{plush}} just stared at it with wide, round eyes, which for {{plush}} meant \"That is one serious puddle.\"",
+        "{{family}} brought boots. Not enough. They brought an umbrella. Not helpful. They brought a very small boat made of a laundry basket and a stick— and {{friend1}} and {{friend2}} climbed in and sailed right across, with {{plush}} at the front like a fearless figurehead.",
+        "On the other side, they planted a flag (a sock on a twig) and named the puddle Lake {{plush}}. When the sun came out and the puddle shrank to a drip, they kept the flag, because even small things deserve a name when they've been enormous."
       ],
       "improv": {
-        "titleTemplate": "Sound tour",
+        "titleTemplate": "The great puddle crossing",
         "beats": [
-          "Sit in {{setting}} (real or pretend) and name five sounds.",
-          "{{friend1}} and {{friend2}} take turns being the announcer.",
-          "One polite rule: inside voice, gentle hands.",
-          "Return home with a favorite sound remembered."
+          "One enormous puddle appears at {{setting}} — describe it three ways.",
+          "Three attempts to cross: walk around, jump over, think bigger.",
+          "Build a silly boat (laundry basket, pillow raft, etc.) and sail across.",
+          "Name the puddle. Plant a flag. Puddle shrinks. Keep the flag."
         ],
         "branches": [
-          "If they want “more”: a mystery bag on the seat (a snack).",
-          "If they want calmer: slow train through a tunnel of blankets."
+          "If they want \"more\": a rubber duck appears and becomes the official puddle lifeguard.",
+          "If they want calmer: the puddle is small but they pretend it's enormous."
         ]
       }
     },
     {
       "id": "spine-008",
-      "tags": ["library", "books"],
-      "tone": "gentle",
-      "titleTemplate": "The whisper castle at {{setting}}",
+      "tags": ["indoor", "pretend", "parade"],
+      "tone": "silly",
+      "titleTemplate": "The royal parade for {{plush}} at {{setting}}",
       "paragraphs": [
-        "{{friend1}} and {{friend2}} tiptoed into {{setting}} where stories slept in neat rows. {{plush}} understood the whisper rule and only squeaked once, very softly.",
-        "They chose a book about a moon that forgot to rise. {{family}} read two pages in a cozy chair. The words felt like a blanket.",
-        "{{friend2}} found a picture of a dragon drinking tea. {{friend1}} giggled with their hand over their mouth. Even giggles can be gentle.",
-        "They checked out a book to take home—promise to be careful— and waved to the librarian. {{setting}} smelled like paper and possibility."
+        "{{friend1}} announced that today, at {{setting}}, {{plush}} would be crowned Royal Supreme Ruler of Everything Soft and Fluffy. {{friend2}} made a crown out of a paper plate. {{family}} played a trumpet sound with their mouth: \"Bah-bah-bah-BAAAH!\"",
+        "The parade began. {{friend1}} marched. {{friend2}} marched. {{family}} marched. They went around the table, past the couch, through the hallway, and back again. {{plush}} rode on a pillow and waved like royalty, which is to say, not at all, because stuffed animals are very dignified.",
+        "Gifts were presented: a shiny button, a particularly round grape, and a drawing of {{plush}} wearing sunglasses. {{plush}} accepted each one with great seriousness. {{friend2}} read a royal speech that was just the word \"fluffy\" said eleven times.",
+        "At the end of the parade, the Royal Supreme Ruler of Everything Soft and Fluffy fell sideways off the pillow and landed face-first on the rug. \"Long live the ruler!\" said {{friend1}}. Everyone cheered. And that was the most magnificent day {{setting}} had ever known."
       ],
       "improv": {
-        "titleTemplate": "Book hunt",
+        "titleTemplate": "Coronation day",
         "beats": [
-          "At {{setting}}, pick a theme: animals, trucks, or stars.",
-          "{{friend1}} finds a cover; {{friend2}} finds a fact.",
-          "{{family}} reads one short page.",
-          "Borrow or imagine a sequel on the walk home."
+          "Crown {{plush}} ruler of something silly at {{setting}}.",
+          "March in a parade — trumpet sounds, marching, waving.",
+          "Present three ridiculous gifts. Read a silly speech.",
+          "{{plush}} falls over. Everyone cheers anyway."
         ],
         "branches": [
-          "If they want “more”: {{plush}} chooses the next book by pointing.",
-          "If they want calmer: sit on the floor fort of pillows instead."
+          "If they want \"more\": {{plush}} issues royal decrees (\"No vegetables on Tuesdays!\").",
+          "If they want calmer: a quiet tea ceremony instead of a parade."
         ]
       }
     },
     {
       "id": "spine-009",
-      "tags": ["backyard", "bugs"],
-      "tone": "gentle",
-      "titleTemplate": "The bug parade at {{setting}}",
+      "tags": ["music", "silly", "cumulative"],
+      "tone": "silly",
+      "titleTemplate": "The song that stuck at {{setting}}",
       "paragraphs": [
-        "In {{setting}}, {{friend1}} lay on a blanket and watched ants carry crumbs like moving punctuation. {{friend2}} drew a chalk circle to protect a tiny beetle—not a cage, a stage.",
-        "{{plush}} watched with serious eyes. {{family}} brought water and hats because sunshine can be sneaky.",
-        "A ladybug landed on {{friend1}}’s shoe. Nobody screamed; they whispered hello. {{friend2}} named it Dot. Names make small things feel friendly.",
-        "When it was time to go inside, they waved to the bugs like neighbors. {{setting}} kept humming with tiny life, and that felt peaceful."
+        "{{friend2}} hummed a little song at {{setting}}. Just three notes: doo dee dah. But then {{friend1}} couldn't stop humming it. Doo dee dah. Doo dee dah. Over and over like a friendly little brain worm.",
+        "It spread. {{family}} started humming it while making lunch. The spoon went doo dee dah against the pot. The fridge seemed to hum it too (though that might have just been the fridge). {{plush}} vibrated slightly, which everyone agreed counted as humming.",
+        "They tried to stop. They sang a different song. But by the second line, it turned into doo dee dah again. They tried silence. Someone's tummy rumbled in the exact rhythm of doo dee dah. Impossible.",
+        "Finally {{friend1}} said, \"Maybe we just keep it.\" So they made up words: \"Doo dee dah, what a day, {{plush}} is great in every way.\" And they sang it all the way to bedtime, which wasn't a problem at all because it turned out to be the perfect lullaby."
       ],
       "improv": {
-        "titleTemplate": "Small creatures",
+        "titleTemplate": "The earworm",
         "beats": [
-          "Lie down or kneel in {{setting}}; find something tiny.",
-          "Use gentle rules: look, don’t squish.",
-          "{{friend1}} and {{friend2}} name the creature.",
-          "Say goodbye and wash hands—science and care together."
+          "Someone hums three notes at {{setting}} — someone else catches it.",
+          "It spreads to {{family}}, to objects, to {{plush}}.",
+          "Try to stop — fail. Everything sounds like the tune.",
+          "Give in. Add silly words. Sing it to sleep."
         ],
         "branches": [
-          "If they want “more”: a worm fashion show (very slow runway).",
-          "If they want calmer: only clouds, no bugs."
+          "If they want \"more\": each character adds a new instrument sound.",
+          "If they want calmer: the song is already slow and sleepy from the start."
         ]
       }
     },
     {
       "id": "spine-010",
-      "tags": ["indoor", "fort"],
+      "tags": ["indoor", "building", "escalation"],
       "tone": "silly",
-      "titleTemplate": "Fort {{setting}}",
+      "titleTemplate": "The tallest tower at {{setting}}",
       "paragraphs": [
-        "{{friend1}} and {{friend2}} built a fort at {{setting}} using chairs and a quilt. {{plush}} was the doorbell: knock knock, squeak squeak.",
-        "{{family}} delivered flashlights and a plate of apple slices. Forts need supplies, obviously.",
-        "Inside, they told a story about a bear who learned to share honey. {{friend2}} did the bear voice. {{friend1}} did the bee buzz. {{plush}} provided dramatic pauses.",
-        "They opened the fort flap to let daylight in—adventures need air. Then they cleaned up together, which is also a kind of hero move."
+        "{{friend1}} stacked a block at {{setting}}. {{friend2}} stacked another. Then another. And another. The tower grew taller than {{plush}}, taller than {{friend1}}, taller than {{friend2}} standing on tippy-toes.",
+        "\"Higher!\" said {{friend1}}. {{family}} lifted {{friend2}} up to place one more block on top. The tower wobbled. It wiggled. It made a sound like \"eeeeee\" — or maybe that was everyone holding their breath.",
+        "{{plush}} was placed on the very tip-top, the bravest block of all. For one glorious second, the tower stood. Magnificent. Unbeatable. The tallest tower in the whole of {{setting}}.",
+        "Then it fell. CRASH-A-CLASH-A-BOOM. Blocks everywhere. {{plush}} bounced off a cushion and did a triple flip. Everyone stared. Then everyone laughed. \"AGAIN!\" shouted {{friend1}}. And they did it again, because the falling down is the whole entire point."
       ],
       "improv": {
-        "titleTemplate": "Fort rules",
+        "titleTemplate": "Tower and crash",
         "beats": [
-          "Build a fort at {{setting}}; pick one job each.",
-          "Snack delivery arrives (real or pretend).",
-          "Tell a two-minute story starring {{plush}}.",
-          "Pack up together; thank the chairs."
+          "Stack something at {{setting}} — describe it getting taller and taller.",
+          "One more piece. Hold your breath. The wobble.",
+          "Put {{plush}} on top. One glorious second of victory.",
+          "CRASH. Laugh. \"AGAIN!\""
         ],
         "branches": [
-          "If they want “more”: a thunderstorm sound effect (pots gently).",
-          "If they want calmer: read a real book inside the fort."
+          "If they want \"more\": each rebuild uses sillier materials (pillows, bananas, shoes).",
+          "If they want calmer: the tower only wobbles but never quite falls."
         ]
       }
     },
     {
       "id": "spine-011",
-      "tags": ["helping", "socks"],
-      "tone": "gentle",
-      "titleTemplate": "The sock detective at {{setting}}",
+      "tags": ["outdoor", "adventure", "cumulative"],
+      "tone": "silly",
+      "titleTemplate": "The very hungry backpack at {{setting}}",
       "paragraphs": [
-        "{{friend1}} noticed one sock was shy and hiding under the couch at {{setting}}. {{friend2}} became a detective with a magnifying glass (actually a plastic cup).",
-        "{{plush}} tracked clues: a crumb trail, a giggly dog, a sunbeam. {{family}} suggested checking the laundry basket—sometimes socks visit friends there.",
-        "The sock was found, a little dusty but brave. {{friend1}} thanked {{friend2}} for patient looking, not fast grabbing.",
-        "They put socks in pairs like best buddies. {{setting}} felt tidy in a cozy, not strict, way."
+        "{{friend1}} packed a backpack for {{setting}}: one apple, one juice box, one blanket, and {{plush}} tucked in on top. But every time they opened it, something new had appeared inside. A sock. A crayon. A pinecone.",
+        "\"Who put this in here?\" said {{friend1}}. \"Not me,\" said {{friend2}}. \"Not me,\" said {{family}}. They all looked at {{plush}}, who stared back with the blank, innocent face of someone who definitely did it.",
+        "They opened the backpack again: a rubber duck, a glove, and a leaf the size of a dinner plate. \"This backpack is EATING the neighborhood!\" said {{friend2}}. {{family}} shook it gently and a marble rolled out, looking embarrassed.",
+        "By the time they got home, the backpack was stuffed with treasures nobody remembered packing. They emptied everything onto the floor and marveled at the collection. {{plush}} sat in the middle, looking extremely proud. \"You,\" said {{friend1}}, pointing, \"are the sneakiest collector in the whole world.\" And {{plush}} did not deny it."
       ],
       "improv": {
-        "titleTemplate": "Mystery, but soft",
+        "titleTemplate": "Mystery backpack",
         "beats": [
-          "Something small is missing at {{setting}}.",
-          "{{friend1}} asks questions; {{friend2}} searches carefully.",
-          "{{family}} gives one hint.",
-          "Celebrate finding; no scolding—only teamwork."
+          "Pack a backpack for {{setting}} — just the basics.",
+          "Every time it opens, there's something new and silly inside.",
+          "Accuse each other. {{plush}} looks suspiciously innocent.",
+          "Empty the backpack at home. Marvel at the collection. Blame {{plush}} lovingly."
         ],
         "branches": [
-          "If they want “more”: the sock was on {{plush}}’s head the whole time.",
-          "If they want calmer: find a toy instead of a sock."
+          "If they want \"more\": the backpack starts making chewing sounds.",
+          "If they want calmer: only one surprise item appears, and it's something nice."
         ]
       }
     },
     {
       "id": "spine-012",
-      "tags": ["music", "dancing"],
+      "tags": ["bedtime", "silly", "role-reversal"],
       "tone": "silly",
-      "titleTemplate": "The kitchen band at {{setting}}",
+      "titleTemplate": "Bedtime for {{family}} at {{setting}}",
       "paragraphs": [
-        "{{friend1}} tapped a wooden spoon. {{friend2}} shook a rice jar gently. At {{setting}}, {{family}} hummed a bass line like a friendly refrigerator.",
-        "{{plush}} conducted with a carrot baton. The song was called “Peas and Thank You.” It made no sense and perfect sense at the same time.",
-        "They danced in socks, sliding a little, laughing a lot. When someone tripped, they laughed and slowed down—good bands take care of each other.",
-        "They ended with a quiet note: water cups. Hydration is rock and roll too."
+        "{{friend1}} decided it was time for {{family}} to go to bed. \"Brush your teeth,\" said {{friend1}} in a very serious voice. \"Did you wash behind your ears?\" said {{friend2}}, wagging a finger just like a grown-up.",
+        "{{family}} giggled and played along. They brushed their teeth with a pretend toothbrush (a carrot). They washed their face with a pretend cloth (a sock). {{plush}} supervised from a chair, nodding firmly at every step.",
+        "\"Now into bed,\" said {{friend1}}, tucking {{family}} under a very small blanket that only covered their knees. \"One story,\" begged {{family}}. \"That's what they ALL say,\" said {{friend2}}, and everyone collapsed laughing.",
+        "{{friend1}} told a story about a family who loved each other so much that bedtime took an hour because of all the hugs. Which is exactly what happened next. {{plush}} fell asleep in the middle of the giggling, and {{family}} whispered, \"Best bedtime ever.\" And it was."
       ],
       "improv": {
-        "titleTemplate": "Noise agreement",
+        "titleTemplate": "Grown-up bedtime",
         "beats": [
-          "Everyone picks one safe “instrument” at {{setting}}.",
-          "Three rounds: loud, medium, whisper.",
-          "{{plush}} is the conductor.",
-          "Bow, then put instruments away."
+          "{{friend1}} and {{friend2}} boss {{family}} through a bedtime routine.",
+          "{{family}} plays along with silly pretend items.",
+          "Tuck {{family}} in. They beg for one more story.",
+          "Story becomes real — hugs all around. {{plush}} sleeps first."
         ],
         "branches": [
-          "If they want “more”: a parade through the hallway.",
-          "If they want calmer: hum-only band."
-        ]
-      }
-    },
-    {
-      "id": "spine-013",
-      "tags": ["outdoor", "kites"],
-      "tone": "gentle",
-      "titleTemplate": "The kite that listened at {{setting}}",
-      "paragraphs": [
-        "At {{setting}}, the wind was polite—enough to play, not enough to steal hats. {{friend1}} held the kite string. {{friend2}} ran until the kite lifted like a hello.",
-        "{{plush}} sat on the grass and judged wind quality: very good. {{family}} helped untangle once, slowly, like fixing necklace knots.",
-        "The kite dipped, then rose. {{friend1}} cheered. {{friend2}} cheered louder, then remembered inside voices near babies. Oops—soft cheer. Still happy.",
-        "They rolled the string carefully, kite tucked like a sleeping bird. {{setting}} smelled like grass and good tries."
-      ],
-      "improv": {
-        "titleTemplate": "Wind play",
-        "beats": [
-          "Check {{setting}} for safe space.",
-          "Take turns: runner, holder, cheerer.",
-          "If it fails, laugh and try a smaller run.",
-          "Pack up with care; thank the wind."
-        ],
-        "branches": [
-          "If they want “more”: kite talks in squeaks only {{plush}} understands.",
-          "If no wind: pretend kite with a ribbon on a stick."
-        ]
-      }
-    },
-    {
-      "id": "spine-014",
-      "tags": ["bedtime", "stars"],
-      "tone": "gentle",
-      "titleTemplate": "Night lights with {{plush}}",
-      "paragraphs": [
-        "Before bed, {{friend1}} and {{friend2}} looked out the window with {{family}}. {{setting}} outside was quiet, but the sky had tiny salt-sprinkle stars.",
-        "{{plush}} pointed (with a paw) at the brightest dot. {{friend2}} said it looked like a nightlight for the whole world. {{friend1}} yawned a happy yawn.",
-        "They named one star after kindness, one after giggles, and one after tomorrow’s breakfast. Naming makes the night feel friendly.",
-        "They climbed into bed with {{plush}} tucked in the middle—warm sandwich. The adventure became a dream without trying."
-      ],
-      "improv": {
-        "titleTemplate": "Goodnight mission",
-        "beats": [
-          "Look outside or at the ceiling; find three lights.",
-          "{{friend1}} names a star; {{friend2}} names a shape.",
-          "{{family}} says one calm sentence.",
-          "Close eyes; imagine {{plush}} rowing a moon boat."
-        ],
-        "branches": [
-          "If they want “more”: a comet is actually an airplane winking.",
-          "If they want calmer: no names—only slow breathing."
-        ]
-      }
-    },
-    {
-      "id": "spine-015",
-      "tags": ["rain", "puddles"],
-      "tone": "silly",
-      "titleTemplate": "Rain boots at {{setting}}",
-      "paragraphs": [
-        "Rain tapped the roof like fingers drumming. {{friend1}} put on boots. {{friend2}} put on boots. {{plush}} wore a plastic bag cape—fashion emergency solved.",
-        "They stepped into {{setting}} where puddles waited like tiny trampolines. {{family}} held hands on the slippery bits.",
-        "{{friend1}} jumped. Splish. {{friend2}} jumped. Splosh. {{plush}} got a tiny splash and did not mind because plushies love drama.",
-        "They came inside to towels and cocoa steam. {{setting}} stayed rainy outside, cozy inside, which is a lucky kind of split."
-      ],
-      "improv": {
-        "titleTemplate": "Weather play",
-        "beats": [
-          "Dress for weather; name each piece.",
-          "One safe jump or stomp at {{setting}}.",
-          "Dry off routine race—{{family}} sets the rules.",
-          "Warm drink or hug to close."
-        ],
-        "branches": [
-          "If they want “more”: puddle is actually a portal to snackland.",
-          "If they want calmer: watch rain from the window instead."
-        ]
-      }
-    },
-    {
-      "id": "spine-016",
-      "tags": ["zoo", "animals"],
-      "tone": "gentle",
-      "titleTemplate": "The pretend zoo at {{setting}}",
-      "paragraphs": [
-        "{{friend1}} and {{friend2}} lined up stuffed animals at {{setting}} like a very serious zoo. {{plush}} was the guest of honor in the middle pen (a laundry basket).",
-        "{{family}} bought tickets (pretend leaves) and walked the path. {{friend2}} explained each animal’s favorite food: grass, crackers, imagination.",
-        "{{friend1}} made sure everyone had water bowls (bottle caps). Caring for pretend animals still counts as caring.",
-        "They closed the zoo with a bow and put animals back to bed on the shelf. {{setting}} felt full of soft roaring and gentle rules."
-      ],
-      "improv": {
-        "titleTemplate": "Stuffed zoo",
-        "beats": [
-          "Arrange toys at {{setting}}; pick habitats.",
-          "{{friend1}} is guide; {{friend2}} is vet.",
-          "One animal needs help: bandage, water, hug.",
-          "Put toys away; thank them for the show."
-        ],
-        "branches": [
-          "If they want “more”: {{plush}} escapes and hides behind a pillow.",
-          "If they want calmer: only three animals, slow tour."
-        ]
-      }
-    },
-    {
-      "id": "spine-017",
-      "tags": ["art", "colors"],
-      "tone": "silly",
-      "titleTemplate": "The rainbow spill at {{setting}}",
-      "paragraphs": [
-        "{{friend1}} painted a sun at {{setting}}. {{friend2}} painted a cloud. {{plush}} accidentally sat on a blue dot and became modern art.",
-        "{{family}} taped paper to the table so the adventure stayed in bounds. Oops still happened—tiny smudge on an elbow—and that was okay.",
-        "They mixed yellow and blue and gasped when green appeared, like a magic trick with no wand. {{friend1}} called it “frog air.” {{friend2}} called it “dinosaur breath.”",
-        "They washed hands like artists do: thorough, splashy, proud. The fridge got a new masterpiece with a magnet named Pride."
-      ],
-      "improv": {
-        "titleTemplate": "Color mixing",
-        "beats": [
-          "Set up {{setting}} with covers and water.",
-          "Each person picks one color.",
-          "Mix once; name the new color silly.",
-          "Clean up together; display or gift the art."
-        ],
-        "branches": [
-          "If they want “more”: {{plush}} needs fingerprints for a passport.",
-          "If they want calmer: crayons only, no paint."
-        ]
-      }
-    },
-    {
-      "id": "spine-018",
-      "tags": ["helping", "grandparent"],
-      "tone": "gentle",
-      "titleTemplate": "Helping hands with {{family}}",
-      "paragraphs": [
-        "{{family}} needed help carrying a bag of oranges at {{setting}}. {{friend1}} took one side. {{friend2}} took the other. {{plush}} rode on top like a tiny supervisor.",
-        "The bag was lighter with teamwork. {{friend1}} counted steps. {{friend2}} watched for bumps. Nobody rushed.",
-        "They set the oranges in a bowl like a sunny pile. {{family}} said thank you in a voice that felt like a hug.",
-        "{{friend1}} and {{friend2}} felt tall—not because they grew, but because helping does that sometimes."
-      ],
-      "improv": {
-        "titleTemplate": "Real helper job",
-        "beats": [
-          "Find a small real task at {{setting}}.",
-          "Split jobs: carry, watch, cheer.",
-          "{{plush}} supervises safely.",
-          "Thank you moment; name what felt good."
-        ],
-        "branches": [
-          "If they want “more”: oranges roll away; gentle chase.",
-          "If they want calmer: carry pillows instead of food."
-        ]
-      }
-    },
-    {
-      "id": "spine-019",
-      "tags": ["games", "hide-seek", "silly"],
-      "tone": "silly",
-      "titleTemplate": "Hide-and-squeak at {{setting}}",
-      "paragraphs": [
-        "{{friend1}} counted while {{friend2}} hid {{plush}} at {{setting}}. Rules were simple: no scary spots, only cozy ones.",
-        "{{friend1}} found {{plush}} behind a pillow fort edge. {{friend2}} popped out with a giggle. {{family}} clapped like gentle thunder.",
-        "They switched roles. {{friend2}} counted slow on purpose because slow counting is fair. {{friend1}} hid {{plush}} under a bright blanket—bold strategy.",
-        "They ended the game before anyone got tired of seeking. Good games know when to stop, like snacks that leave you wanting one more bite—but later."
-      ],
-      "improv": {
-        "titleTemplate": "Soft hide-and-seek",
-        "beats": [
-          "Set safe zones at {{setting}}.",
-          "Hide {{plush}}; seek together if needed.",
-          "Two rounds; swap roles.",
-          "End with everyone visible and giggling."
-        ],
-        "branches": [
-          "If they want “more”: {{plush}} leaves tiny clues (yarn trail).",
-          "If they want calmer: peek-a-boo instead of hiding."
-        ]
-      }
-    },
-    {
-      "id": "spine-020",
-      "tags": ["music", "lullaby"],
-      "tone": "gentle",
-      "titleTemplate": "The humming bridge at {{setting}}",
-      "paragraphs": [
-        "{{friend1}} and {{friend2}} stood on a low bridge at {{setting}} and listened to water burble underneath. {{family}} hummed a tune that matched the rhythm.",
-        "{{plush}} leaned on the railing like a thoughtful captain. {{friend2}} tried to clap with the water’s beat—almost, almost.",
-        "A leaf floated by like a tiny boat. {{friend1}} waved to it. Goodbye, leaf. Good luck, leaf. The world felt connected in a small, sweet way.",
-        "They walked on, holding hands, humming the same three notes. Sometimes adventures are just shared sound."
-      ],
-      "improv": {
-        "titleTemplate": "Listen and hum",
-        "beats": [
-          "Stop at {{setting}}; close eyes for five seconds.",
-          "Name a water or wind sound.",
-          "{{family}} starts a hum; kids join.",
-          "Walk away humming together."
-        ],
-        "branches": [
-          "If they want “more”: make up words about {{plush}}’s boat.",
-          "If they want calmer: only listening, no humming."
-        ]
-      }
-    },
-    {
-      "id": "spine-021",
-      "tags": ["picnic", "food"],
-      "tone": "gentle",
-      "titleTemplate": "The checkered blanket at {{setting}}",
-      "paragraphs": [
-        "{{family}} spread a blanket at {{setting}}. {{friend1}} unpacked crackers like treasure. {{friend2}} arranged apple slices in a smile.",
-        "{{plush}} had a plate the size of a coaster. {{plush}} pretended to feast like royalty. {{friend1}} bowed. {{friend2}} curtsied. Manners can be silly too.",
-        "An ant line appeared, very organized. {{friend2}} moved a crumb farther away so the picnic stayed human-sized. {{friend1}} admired the ant teamwork.",
-        "They packed up, left no trash, waved to the trees. {{setting}} looked the same, but their hearts felt fuller."
-      ],
-      "improv": {
-        "titleTemplate": "Picnic setup",
-        "beats": [
-          "Lay blanket at {{setting}}; assign jobs.",
-          "Eat one round; talk about textures.",
-          "Deal kindly with nature visitors (ants, birds).",
-          "Clean up; thank {{family}} for packing."
-        ],
-        "branches": [
-          "If they want “more”: fancy hats for crackers.",
-          "If they want calmer: indoor picnic with a lamp “sun.”"
-        ]
-      }
-    },
-    {
-      "id": "spine-022",
-      "tags": ["goodbye", "hello"],
-      "tone": "gentle",
-      "titleTemplate": "Hello again at {{setting}}",
-      "paragraphs": [
-        "{{friend1}} hadn’t seen {{friend2}} in a whole weekend—an eternity in kid time. At {{setting}}, they ran hug-first, shoes untied on purpose.",
-        "{{plush}} joined the hug like a soft referee. {{family}} watched from a bench, smiling the grown-up smile that means “this is the good stuff.”",
-        "They showed each other two new things: a sticker, a scraped knee healing, a funny word. Listening felt like a game with no winner—everyone wins.",
-        "They promised to save one small story for tomorrow, because some adventures need a sequel."
-      ],
-      "improv": {
-        "titleTemplate": "Reunion beats",
-        "beats": [
-          "Meet at {{setting}}; hug or high-five rule.",
-          "Each shares one tiny news item.",
-          "{{plush}} gets introduced like a celebrity.",
-          "Plan a tomorrow teaser—one sentence only."
-        ],
-        "branches": [
-          "If they want “more”: secret handshake practice.",
-          "If they want calmer: quiet walk side by side."
+          "If they want \"more\": {{family}} keeps asking for water, just like kids do.",
+          "If they want calmer: everyone tucks each other in at the same time."
         ]
       }
     }
