@@ -6,4 +6,10 @@ export default defineConfig({
   plugins: [react()],
   // Relative asset paths work on GitHub Pages, Netlify, and file://
   base: "./",
+  server: {
+    proxy: {
+      // Local dev: forward API calls to the Gemini backend server.
+      "/api": "http://localhost:8080",
+    },
+  },
 })

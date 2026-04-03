@@ -1,0 +1,79 @@
+# Deploy the Vite app + Gemini API server to Google Cloud Run.
+#
+# Prerequisites (one-time in GCP + GitHub):
+# - Artifact Registry Docker repository
+# - Secret Manager secret (e.g. gemini-api-key) with your Gemini Developer API key
+# - Cloud Run service account: roles/secretmanager.secretAccessor on that secret
+# - GitHub Actions service account JSON in repo secret GCP_SA_KEY (or use Workload Identity Federation)
+#
+# Repository variables (Settings → Secrets and variables → Actions → Variables):
+#   GCP_PROJECT_ID, GCP_REGION, ARTIFACT_REGISTRY_REPO, CLOUD_RUN_SERVICE
+#
+# Optional repository variable:
+#   GEMINI_SECRET_NAME  (default: gemini-api-key)
+
+name: Deploy to Cloud Run
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+concurrency:
+  group: cloud-run
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Skip until GitHub variables + secret are configured (avoids failing forks/CI).
+    if: ${{ vars.GCP_PROJECT_ID != '' && secrets.GCP_SA_KEY != '' }}
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - uses: google-github-actions/setup-gcloud@v2
+
+      - name: Set image URL
+        id: image
+        env:
+          PROJECT_ID: ${{ vars.GCP_PROJECT_ID }}
+          REGION: ${{ vars.GCP_REGION }}
+          REPO: ${{ vars.ARTIFACT_REGISTRY_REPO }}
+          SERVICE: ${{ vars.CLOUD_RUN_SERVICE }}
+        run: |
+          if [ -z "$PROJECT_ID" ] || [ -z "$REGION" ] || [ -z "$REPO" ] || [ -z "$SERVICE" ]; then
+            echo "Set GitHub Actions variables: GCP_PROJECT_ID, GCP_REGION, ARTIFACT_REGISTRY_REPO, CLOUD_RUN_SERVICE"
+            exit 1
+          fi
+          echo "IMAGE=${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO}/adventure-stories:${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
+
+      - name: Configure Docker for Artifact Registry
+        env:
+          REGION: ${{ vars.GCP_REGION }}
+        run: gcloud auth configure-docker "${REGION}-docker.pkg.dev" --quiet
+
+      - name: Build and push image
+        run: |
+          docker build -t "${{ steps.image.outputs.IMAGE }}" .
+          docker push "${{ steps.image.outputs.IMAGE }}"
+
+      - name: Deploy to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          project_id: ${{ vars.GCP_PROJECT_ID }}
+          service: ${{ vars.CLOUD_RUN_SERVICE }}
+          region: ${{ vars.GCP_REGION }}
+          image: ${{ steps.image.outputs.IMAGE }}
+          flags: --allow-unauthenticated
+          env_vars: |-
+            GEMINI_MODEL=gemini-2.5-flash
+          secrets: |-
+            GEMINI_API_KEY=gemini-api-key:latest

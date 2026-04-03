@@ -52,7 +52,8 @@ function isDefaultRecord(r: Record<string, string>): boolean {
     !(r.place ?? "").trim() &&
     !(r.setting ?? "").trim() &&
     (r.mode !== "improv") &&
-    (r.source ?? "") !== "ai"
+    (r.source ?? "") !== "ai" &&
+    (r.source ?? "") !== "gemini"
   );
 }
 
@@ -71,7 +72,7 @@ function parseV1(o: Record<string, unknown>): Record<string, string> | null {
   };
 }
 
-/** v=2 compact keys: f friends, a family, l plush, x plushExtra, p place, t setting, m "i" improv, d 1 ai */
+/** v=2 compact keys: f friends, a family, l plush, x plushExtra, p place, t setting, m "i" improv, d 1 on-device ai / d 2 gemini cloud */
 function parseV2(o: Record<string, unknown>): Record<string, string> | null {
   if (o.v !== 2) return null;
   const str = (k: string) => (typeof o[k] === "string" ? (o[k] as string) : "");
@@ -83,7 +84,7 @@ function parseV2(o: Record<string, unknown>): Record<string, string> | null {
     place: str("p"),
     setting: str("t"),
     mode: o.m === "i" ? "improv" : "story",
-    source: o.d === 1 ? "ai" : "",
+    source: o.d === 1 ? "ai" : o.d === 2 ? "gemini" : "",
   };
 }
 
@@ -104,6 +105,7 @@ function recordToCompactV2(next: Record<string, string>): Record<string, unknown
   if ((next.setting ?? "").length) c.t = next.setting ?? "";
   if (next.mode === "improv") c.m = "i";
   if ((next.source ?? "") === "ai") c.d = 1;
+  if ((next.source ?? "") === "gemini") c.d = 2;
   return c;
 }
 
