@@ -13,7 +13,9 @@ const distDir = path.resolve(__dirname, "../dist");
 
 app.post("/api/generate", async (req, res) => {
   const apiKey = process.env.GEMINI_API_KEY;
-  const model = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+  const model = process.env.GEMINI_MODEL || "gemini-2.5-flash-lite";
+  // Output cap for story length; override with GEMINI_MAX_OUTPUT_TOKENS.
+  const maxOutputTokens = Number(process.env.GEMINI_MAX_OUTPUT_TOKENS) || 2048;
 
   if (!apiKey) {
     res.status(500).json({ error: "Missing GEMINI_API_KEY on the server." });
@@ -32,9 +34,11 @@ app.post("/api/generate", async (req, res) => {
       model,
       contents: prompt,
       config: {
-        maxOutputTokens: 512,
+        maxOutputTokens,
         temperature: 0.75,
         topK: 40,
+        // 0 disables thinking/reasoning budget (SDK: ThinkingConfig.thinkingBudget).
+        thinkingConfig: { thinkingBudget: 0 },
       },
     });
 

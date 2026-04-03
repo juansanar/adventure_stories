@@ -36,10 +36,12 @@ Run both processes:
 
 ```bash
 npm run dev
-GEMINI_API_KEY="YOUR_KEY" GEMINI_MODEL="gemini-2.5-flash" npm run server
+GEMINI_API_KEY="YOUR_KEY" GEMINI_MODEL="gemini-2.5-flash-lite" npm run server
 ```
 
 The Vite dev server proxies `/api` to `http://localhost:8080`.
+
+On Cloud Run, optional env **`GEMINI_MAX_OUTPUT_TOKENS`** (default **2048**) caps model output. The server sets **`thinkingBudget: 0`** so reasoning tokens are not used. Default model is **`gemini-2.5-flash-lite`** (override with **`GEMINI_MODEL`**).
 
 ## Build
 

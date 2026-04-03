@@ -85,6 +85,7 @@ jobs:
           image: ${{ steps.image.outputs.IMAGE }}
           flags: --allow-unauthenticated
           env_vars: |-
-            GEMINI_MODEL=gemini-2.5-flash
+            GEMINI_MODEL=gemini-2.5-flash-lite
+            GEMINI_MAX_OUTPUT_TOKENS=2048
           secrets: |-
             GEMINI_API_KEY=gemini-api-key:latest
