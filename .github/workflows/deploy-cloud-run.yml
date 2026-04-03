@@ -54,6 +54,16 @@ jobs:
             echo "Set GitHub Actions variables: GCP_PROJECT_ID, GCP_REGION, ARTIFACT_REGISTRY_REPO, CLOUD_RUN_SERVICE"
             exit 1
           fi
+          # REPO must be the Artifact Registry *repository id* only (e.g. gh-adventure-stories),
+          # not a full hostname or path — the workflow already prefixes REGION-docker.pkg.dev/PROJECT_ID/
+          case "$REPO" in
+            */*|*docker.pkg.dev*)
+              echo "::error::ARTIFACT_REGISTRY_REPO must be only the repository id (single segment, no slashes)."
+              echo "Got: $REPO"
+              echo "Example: gh-adventure-stories — not us-central1-docker.pkg.dev/PROJECT/gh-adventure-stories"
+              exit 1
+              ;;
+          esac
           echo "IMAGE=${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO}/adventure-stories:${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
 
       - name: Configure Docker for Artifact Registry

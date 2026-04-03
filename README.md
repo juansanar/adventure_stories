@@ -90,7 +90,7 @@ In **Settings → Secrets and variables → Actions → Variables**, set:
 |----------|---------|---------|
 | `GCP_PROJECT_ID` | `my-project-123` | GCP project |
 | `GCP_REGION` | `us-central1` | Cloud Run + Artifact Registry host |
-| `ARTIFACT_REGISTRY_REPO` | `docker-repo` | Artifact Registry **repository id** |
+| `ARTIFACT_REGISTRY_REPO` | `gh-adventure-stories` | **Repository id only** (one name, no `/`). Not the full `…-docker.pkg.dev/...` path — the workflow builds that for you. |
 | `CLOUD_RUN_SERVICE` | `adventure-stories` | Cloud Run service name |
 
 Push to `main` (or run **Deploy to Cloud Run** manually). If variables/secret are missing, the workflow is **skipped** so forks do not fail CI.
