@@ -26,8 +26,9 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    # Skip until GitHub variables + secret are configured (avoids failing forks/CI).
-    if: ${{ vars.GCP_PROJECT_ID != '' && secrets.GCP_SA_KEY != '' }}
+    # Job-level `if` cannot use `secrets` (GitHub limitation). Gate on vars only; if
+    # `GCP_SA_KEY` is missing, the auth step will fail with a clear error.
+    if: ${{ vars.GCP_PROJECT_ID != '' }}
     permissions:
       contents: read
 
