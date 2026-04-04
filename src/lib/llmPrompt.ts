@@ -25,7 +25,7 @@ function buildGeminiSystemInstruction(mode: OutputMode): string {
   const formatRule =
     mode === "improv"
       ? `The user message asks for a labeled improv outline. Follow the user’s output format exactly (plain text, no markdown or code fences).`
-      : `The user message asks for a read-aloud story starting with TITLE: on its own line, then a blank line, then body paragraphs. Follow that format exactly. Do not use markdown headings or bullet lists in the story body.`;
+      : `The user message asks for a read-aloud story. The very first line of your reply must be only \`TITLE: <short title>\` (literal word TITLE, colon, space, then a real title — never story prose on that line). Line 2 must be blank. Then the story paragraphs. Do not use markdown headings or bullet lists in the story body.`;
 
   return [
     SAFETY_RULES,
@@ -48,8 +48,8 @@ function buildGeminiUserMessage(ctx: FillContext, mode: OutputMode): string {
 
 Give a short improv outline for a parent to riff on live.
 
-Output in exactly this labeled format (no markdown, no code fences):
-TITLE: (one line)
+Output in exactly this labeled format (no markdown, no code fences). Line 1 must be a real title after TITLE:, not parentheses or instructions:
+TITLE: <short title for this kit>
 BEAT1: (one short sentence)
 BEAT2: (one short sentence)
 BEAT3: (one short sentence)
@@ -68,12 +68,12 @@ Length (important):
 - Write 4–5 short paragraphs (not 1–2), each a few sentences, separated by blank lines.
 - Do not stop after TITLE alone, and do not answer with only one sentence for the whole story.
 
-Output format:
-TITLE: (one line only)
-(then one blank line)
-(then the full story paragraphs as above)
+Output format (required — do not copy the example title; invent your own):
+Line 1: TITLE: <your short title here>   (example shape only: TITLE: The Pancake That Hiccuped)
+Line 2: (blank)
+Line 3 onward: story paragraphs as above
 
-Do not use markdown headings or bullet lists in the story body. Do not add text before TITLE:.`;
+The first line must be the TITLE line only — do not start with "Once upon" or any story sentence before TITLE:. Do not use markdown headings or bullet lists in the story body.`;
 }
 
 export type GeminiCloudMessages = {
