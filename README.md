@@ -15,6 +15,66 @@ npm run dev
 
 Open the URL shown in the terminal (usually `http://localhost:5173`).
 
+That is enough for **Template library** mode. For **Gemini (cloud)** you also need the API server and its dependencies—see [Local testing](#local-testing).
+
+## Local testing
+
+How you run the app depends on which **story source** you select in the UI.
+
+### Template library (default)
+
+1. `npm install`
+2. `npm run dev`
+3. Open the URL Vite prints (e.g. `http://localhost:5173/`).
+4. Leave the source on **Template library** and use **Create story**.
+
+No API key and no `server/` install required.
+
+### Gemini (cloud)
+
+The browser only talks to **Vite**; Vite **proxies** `/api/*` to the Express app in [`server/`](server/). You need **both** processes running, with a valid **`GEMINI_API_KEY`** on the server process.
+
+**One-time:** install dependencies for the API (in addition to root `npm install`):
+
+```bash
+npm --prefix server install
+```
+
+**Run (pick one):**
+
+| Approach | Command |
+|----------|---------|
+| **Single command** (recommended) | `GEMINI_API_KEY="YOUR_KEY" npm run dev:with-api` |
+| **Two terminals** | Terminal 1: `npm run dev` — Terminal 2: `GEMINI_API_KEY="YOUR_KEY" npm run server` |
+
+Then:
+
+1. Open the **Vite** URL (usually `http://localhost:5173/`), **not** port 8080—the API is not set up for arbitrary browser origins without the proxy.
+2. Choose **Gemini (cloud)** in the app, then **Create story**.
+
+**Ports**
+
+- Default API port is **8080**. Vite reads **`API_PORT`** when building the proxy target (see [`vite.config.ts`](vite.config.ts)); the server uses **`PORT`** (e.g. on Cloud Run) or **`API_PORT`** or **8080** (see [`server/index.mjs`](server/index.mjs)).
+- If **8080 is already in use** (`EADDRINUSE`), stop the old server or move **both** sides to the same alternate port, e.g. `API_PORT=8081 GEMINI_API_KEY="YOUR_KEY" npm run dev:with-api`.
+- On macOS you can free 8080 with: `lsof -ti :8080 | xargs kill` (only if you know it is safe to stop that process).
+- If **5173** is busy, Vite picks **5174**, **5175**, etc.—always use the URL printed in the terminal.
+
+**When “Create story” fails**
+
+| Symptom | Likely cause |
+|---------|----------------|
+| **Failed to fetch** | API not running, or **API_PORT** mismatch between Vite and server. |
+| **500** / “Missing **GEMINI_API_KEY**” | Server started without the key; put `GEMINI_API_KEY=...` on the same line as `npm run dev:with-api` or `npm run server`. |
+| Empty or odd model output | Try another **`GEMINI_MODEL`** (see below). |
+
+If you run **`npm run preview`** after **`npm run build`**, you still need the API server running locally; the preview server uses the same **`API_PORT`**-aware `/api` proxy as `npm run dev`.
+
+### On-device AI
+
+1. `npm install` and `npm run dev` as in Quick start.
+2. Follow [On-device AI setup](#on-device-ai-setup) for the model file.
+3. In the app choose **On-device AI**, load the model, then **Create story**.
+
 ## On-device AI setup
 
 1. Use a **Web**-converted Gemma model (see [Google’s Web LLM guide](https://ai.google.dev/edge/mediapipe/solutions/genai/llm_inference/web_js) and Hugging Face).
@@ -38,35 +98,7 @@ This mode sends **system** and **user** messages built in the app ([`src/lib/llm
 | `systemInstruction` | No | Safety, style, grounding, and output rules. Omitted when empty. |
 | `prompt` | Legacy | If `userMessage` is empty, the server uses `prompt` as the only content and does not set a system instruction. |
 
-### Local dev
-
-You need **two things** at once: the Vite app (port **5173**) and the API server (port **8080**). The app proxies `/api` to `http://localhost:8080`, so opening only the static build or only one process usually breaks **Gemini (cloud)**.
-
-**Option A — one command** (from the repo root; pass your key on the same line so both child processes inherit it):
-
-```bash
-GEMINI_API_KEY="YOUR_KEY" npm run dev:with-api
-```
-
-**Option B — two terminals**
-
-```bash
-# Terminal 1
-npm run dev
-
-# Terminal 2
-GEMINI_API_KEY="YOUR_KEY" GEMINI_MODEL="gemini-2.5-flash-lite" npm run server
-```
-
-Then open **http://localhost:5173/** (or whatever port Vite prints if 5173 is busy — the API has no CORS shim for other origins).
-
-**Port already in use (`EADDRINUSE` on 8080):** Another `node`/`npm run server` is probably still running. Stop it, or use a free port for **both** the API and the Vite proxy:
-
-```bash
-API_PORT=8081 GEMINI_API_KEY="YOUR_KEY" npm run dev:with-api
-```
-
-**If generate fails:** `Failed to fetch` means nothing is listening on the API port (**8080** by default, or **API_PORT** if you set it). A **500** with “Missing GEMINI_API_KEY” means the server process was started without the key. **`npm run preview`** also needs the API server running and uses the same proxy rules as `npm run dev` (respects **API_PORT** when set).
+**Local Gemini:** step-by-step flow, ports, and troubleshooting are in [Local testing → Gemini (cloud)](#gemini-cloud).
 
 On Cloud Run, optional env **`GEMINI_MAX_OUTPUT_TOKENS`** (default **2048**) caps model output. The server sets **`thinkingBudget: 0`** so reasoning tokens are not used. Default model is **`gemini-2.5-flash-lite`** (override with **`GEMINI_MODEL`**).
 
