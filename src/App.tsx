@@ -22,7 +22,7 @@ import {
 } from "./lib/aiOutputParse";
 import {
   buildGemmaOnDevicePrompt,
-  buildGeminiCloudPrompt,
+  buildGeminiCloudMessages,
 } from "./lib/llmPrompt";
 import {
   generateWithLlm,
@@ -447,11 +447,14 @@ export default function App() {
     await yieldToUi();
 
     try {
-      const prompt = buildGeminiCloudPrompt(fillCtx, mode);
+      const { systemInstruction, userMessage } = buildGeminiCloudMessages(
+        fillCtx,
+        mode,
+      );
       const resp = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt }),
+        body: JSON.stringify({ systemInstruction, userMessage }),
       });
 
       if (!resp.ok) {
