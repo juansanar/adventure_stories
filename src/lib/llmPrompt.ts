@@ -13,7 +13,7 @@ const READ_ALOUD_STYLE = `Read-aloud style (in the spirit of Robert Munsch or Ju
 - Strong rhythm and repetition: a catchphrase, refrain, or pattern children can predict and join.
 - Clear, speakable dialogue; a small problem that grows a bit silly or surprising, then resolves cozily.
 - Physical, playful humor is welcome when it stays gentle and fits the safety rules above.
-- Variety (important): do not make the plot hinge on something wobbling, teetering, tilting, or almost falling (blocks, towers, stacks, plates, cakes, cups). Pick a different kind of mishap unless the setting makes that truly unavoidable—use dialogue, counting, rhymes, mix-ups, hiding, echoes, wrong order, or a silly but stable prop instead.`;
+- *Important*: Stories should have substantial variety and creativity. They should resemble the style of common and popular children stories from known authors (e.g. Robert Munsch, Julia Donaldson, Dr. Seuss, etc.).`;
 
 const STORY_PROBLEM_DIVERSITY = `Problem choice: invent one fresh, specific tiny mishap that fits the cast and setting. Avoid repeating the “unstable stack” pattern across stories.`;
 
