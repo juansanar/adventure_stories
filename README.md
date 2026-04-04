@@ -58,9 +58,15 @@ npm run dev
 GEMINI_API_KEY="YOUR_KEY" GEMINI_MODEL="gemini-2.5-flash-lite" npm run server
 ```
 
-Then open **http://localhost:5173/** (not port 8080 for day-to-day testing — the API has no CORS shim for other origins).
+Then open **http://localhost:5173/** (or whatever port Vite prints if 5173 is busy — the API has no CORS shim for other origins).
 
-**If generate fails:** `Failed to fetch` means nothing is listening on **8080** (start `npm run server`). A **500** with “Missing GEMINI_API_KEY” means the server process was started without the key. **`npm run preview`** also needs the API server running and uses the same proxy rules as `npm run dev`.
+**Port already in use (`EADDRINUSE` on 8080):** Another `node`/`npm run server` is probably still running. Stop it, or use a free port for **both** the API and the Vite proxy:
+
+```bash
+API_PORT=8081 GEMINI_API_KEY="YOUR_KEY" npm run dev:with-api
+```
+
+**If generate fails:** `Failed to fetch` means nothing is listening on the API port (**8080** by default, or **API_PORT** if you set it). A **500** with “Missing GEMINI_API_KEY” means the server process was started without the key. **`npm run preview`** also needs the API server running and uses the same proxy rules as `npm run dev` (respects **API_PORT** when set).
 
 On Cloud Run, optional env **`GEMINI_MAX_OUTPUT_TOKENS`** (default **2048**) caps model output. The server sets **`thinkingBudget: 0`** so reasoning tokens are not used. Default model is **`gemini-2.5-flash-lite`** (override with **`GEMINI_MODEL`**).
 

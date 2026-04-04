@@ -78,12 +78,23 @@ app.get("*", (req, res) => {
   });
 });
 
-const port = Number(process.env.PORT || "8080");
-app.listen(port, () => {
+// Cloud Run sets PORT. Locally, API_PORT overrides the default 8080 (must match Vite proxy).
+const port = Number(process.env.PORT || process.env.API_PORT || "8080");
+const server = app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
   if (!process.env.GEMINI_API_KEY) {
     console.warn(
       "[api] GEMINI_API_KEY is not set — POST /api/generate will return 500 until you export it.",
     );
   }
+});
+server.on("error", (err) => {
+  if (err && err.code === "EADDRINUSE") {
+    console.error(
+      `[api] Port ${port} is already in use. Stop the old server (e.g. macOS: lsof -ti :${port} | xargs kill), or use another port for both processes: API_PORT=8081 GEMINI_API_KEY=... npm run dev:with-api`,
+    );
+  } else {
+    console.error(err);
+  }
+  process.exit(1);
 });

@@ -522,7 +522,7 @@ export default function App() {
         (/failed to fetch/i.test(msg) || /networkerror/i.test(msg));
       if (looksLikeNetwork) {
         msg =
-          "Could not reach the story API. For local testing, run the backend on port 8080 (e.g. GEMINI_API_KEY=your_key npm run server) while npm run dev is running, or use GEMINI_API_KEY=your_key npm run dev:with-api from the project root.";
+          "Could not reach the story API. For local testing, run the backend (default port 8080) while Vite is running — e.g. GEMINI_API_KEY=your_key npm run dev:with-api. If 8080 is busy, use the same API_PORT for both, e.g. API_PORT=8081 GEMINI_API_KEY=your_key npm run dev:with-api.";
       }
       setLlmError(msg);
       setFeedback(msg);
