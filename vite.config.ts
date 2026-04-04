@@ -12,4 +12,10 @@ export default defineConfig({
       "/api": "http://localhost:8080",
     },
   },
+  // `vite preview` does not inherit `server.proxy` unless mirrored here.
+  preview: {
+    proxy: {
+      "/api": "http://localhost:8080",
+    },
+  },
 })

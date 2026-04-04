@@ -81,4 +81,9 @@ app.get("*", (req, res) => {
 const port = Number(process.env.PORT || "8080");
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
+  if (!process.env.GEMINI_API_KEY) {
+    console.warn(
+      "[api] GEMINI_API_KEY is not set — POST /api/generate will return 500 until you export it.",
+    );
+  }
 });
