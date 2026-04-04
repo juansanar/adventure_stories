@@ -13,16 +13,29 @@ const READ_ALOUD_STYLE = `Read-aloud style (in the spirit of Robert Munsch or Ju
 - Strong rhythm and repetition: a catchphrase, refrain, or pattern children can predict and join.
 - Clear, speakable dialogue; a small problem that grows a bit silly or surprising, then resolves cozily.
 - Physical, playful humor is welcome when it stays gentle and fits the safety rules above.
-- *Important*: Stories should have substantial variety and creativity. They should resemble the style of common and popular children stories from known authors (e.g. Robert Munsch, Julia Donaldson, Dr. Seuss, etc.).`;
+- Stories should have substantial variety and creativity. They should resemble the style of common and popular children stories from known authors (e.g. Robert Munsch, Julia Donaldson, Dr. Seuss, etc.).`;
 
-const STORY_PROBLEM_DIVERSITY = `Problem choice: invent one fresh, specific tiny mishap that fits the cast and setting. Avoid repeating the “unstable stack” pattern across stories.`;
+const VARIETY_GROUNDING_AND_SHAPE = `Variety and plot shape:
+- Invent one fresh, specific tiny mishap that fits the cast and setting. Do not reuse the same physical gag every time.
+- Avoid stale “unstable structure” centerpieces unless the user’s stated setting clearly includes them: e.g. wobbly or teetering arches, bridges, towers, or stacks of objects. Prefer mix-ups about turns, funny sounds, small lost items, gentle misunderstandings, or something lightly stuck or tangled.
+- Ground the story in the named characters and the stated setting. Do not introduce major new locations or props that contradict that setting.
+- One clear gentle cause leads to a small escalation, then a cozy fix. Do not drop in unrelated magic objects or random twists unless they follow naturally from what already happened.`;
 
-/** Gemma on-device (MediaPipe) expects chat-style turn markers in the prompt string. */
-function wrapGemmaTurn(userContent: string): string {
-  return `<start_of_turn>user\n${userContent}<end_of_turn>\n<start_of_turn>model\n`;
+function buildGeminiSystemInstruction(mode: OutputMode): string {
+  const formatRule =
+    mode === "improv"
+      ? `The user message asks for a labeled improv outline. Follow the user’s output format exactly (plain text, no markdown or code fences).`
+      : `The user message asks for a read-aloud story starting with TITLE: on its own line, then a blank line, then body paragraphs. Follow that format exactly. Do not use markdown headings or bullet lists in the story body.`;
+
+  return [
+    SAFETY_RULES,
+    READ_ALOUD_STYLE,
+    VARIETY_GROUNDING_AND_SHAPE,
+    formatRule,
+  ].join("\n\n");
 }
 
-function buildLlmUserContent(ctx: FillContext, mode: OutputMode): string {
+function buildGeminiUserMessage(ctx: FillContext, mode: OutputMode): string {
   const castBlock = `Cast (use these names and roles as given):
 - First friend or group lead: ${ctx.friend1}
 - Second friend or rest of friends: ${ctx.friend2}
@@ -30,10 +43,10 @@ function buildLlmUserContent(ctx: FillContext, mode: OutputMode): string {
 - Plush friends: ${ctx.plush}
 - Setting: ${ctx.setting}`;
 
-  const sharedPrefix = `${SAFETY_RULES}\n\n${READ_ALOUD_STYLE}\n\n${STORY_PROBLEM_DIVERSITY}\n\n${castBlock}\n\n`;
-
   if (mode === "improv") {
-    const task = `Give a short improv outline for a parent to riff on live.
+    return `${castBlock}
+
+Give a short improv outline for a parent to riff on live.
 
 Output in exactly this labeled format (no markdown, no code fences):
 TITLE: (one line)
@@ -44,10 +57,11 @@ BEAT4: (one short sentence)
 BRANCH: (one line: a "if they want sillier" optional twist)
 
 Do not add any lines before TITLE:.`;
-    return `${sharedPrefix}${task}`;
   }
 
-  const task = `Write one original short adventure story using the cast and setting.
+  return `${castBlock}
+
+Write one original short adventure story using the cast and setting.
 
 Length (important):
 - After TITLE, the story body should be about 250–350 words for read-aloud (several minutes aloud).
@@ -60,21 +74,38 @@ TITLE: (one line only)
 (then the full story paragraphs as above)
 
 Do not use markdown headings or bullet lists in the story body. Do not add text before TITLE:.`;
-  return `${sharedPrefix}${task}`;
 }
 
-/** Prompt for MediaPipe Gemma on-device: includes `<start_of_turn>` markers the local model expects. */
+export type GeminiCloudMessages = {
+  systemInstruction: string;
+  userMessage: string;
+};
+
+/** System + user messages for the Gemini API (cloud). */
+export function buildGeminiCloudMessages(
+  ctx: FillContext,
+  mode: OutputMode,
+): GeminiCloudMessages {
+  return {
+    systemInstruction: buildGeminiSystemInstruction(mode),
+    userMessage: buildGeminiUserMessage(ctx, mode),
+  };
+}
+
+/** Gemma on-device (MediaPipe) expects chat-style turn markers in the prompt string. */
+function wrapGemmaTurn(userContent: string): string {
+  return `<start_of_turn>user\n${userContent}<end_of_turn>\n<start_of_turn>model\n`;
+}
+
+/** Single user turn for Gemma: system rules + user task in one block (no API system role). */
 export function buildGemmaOnDevicePrompt(
   ctx: FillContext,
   mode: OutputMode,
 ): string {
-  return wrapGemmaTurn(buildLlmUserContent(ctx, mode));
-}
-
-/** Plain user message for Gemini API (cloud). Do not wrap with Gemma turn tokens. */
-export function buildGeminiCloudPrompt(
-  ctx: FillContext,
-  mode: OutputMode,
-): string {
-  return buildLlmUserContent(ctx, mode);
+  const { systemInstruction, userMessage } = buildGeminiCloudMessages(
+    ctx,
+    mode,
+  );
+  const combined = `${systemInstruction}\n\n---\n\n${userMessage}`;
+  return wrapGemmaTurn(combined);
 }
