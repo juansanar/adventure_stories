@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "spines": [
     {
       "id": "spine-001",
@@ -8,7 +8,7 @@
       "titleTemplate": "The unstoppable sneeze at {{setting}}",
       "paragraphs": [
         "{{friend1}} felt a tickle in their nose at {{setting}}. A tiny tickle. A wiggly tickle. Then— AAAH-CHOO!— and every cushion on the couch flipped upside down.",
-        "\"That was a big one!\" said {{friend2}}. But {{friend1}}'s nose was not finished. AAAH-CHOOOO!— the curtains blew sideways, the books jumped off the shelf, and {{plush}} flew across the room like a furry little rocket.",
+        "\"That was a big one!\" said {{friend2}}. But {{friend1}}'s nose was not finished. AAAH-CHOOOO!— the curtains blew sideways, the books jumped off the shelf, and {{plush}} flew across the room like a furry little rocket, still cheering {{friend1}} on with both paws up.",
         "{{family}} brought a tissue. But before {{friend1}} could grab it— AAAAAAH-CHOOOOOOO!— the biggest sneeze yet! The tissue flew out the window, the lampshade spun like a top, and {{plush}} landed on {{friend2}}'s head like the world's silliest hat.",
         "Then {{friend1}}'s nose went quiet. Just like that. \"I think I'm done,\" said {{friend1}}. They blew their nose very softly, and everyone clapped. {{plush}} took a bow from the top of {{friend2}}'s head. That was, by far, the best sneeze {{setting}} had ever seen."
       ],
@@ -34,7 +34,7 @@
       "paragraphs": [
         "{{friend1}} and {{friend2}} were helping {{family}} make pudding at {{setting}}. They stirred once. They stirred twice. They stirred three times, and the pudding started to grow.",
         "\"Stop growing!\" said {{friend1}}. The pudding did not stop. It filled the bowl. It filled the pot. It oozed over the table like a very slow, very wobbly, chocolate river.",
-        "\"Quick, eat it!\" said {{friend2}}. So they ate, and they ate, and they ate. {{family}} ate with a big spoon. {{friend1}} ate with a medium spoon. {{plush}} ate with a pretend spoon, which was no help at all.",
+        "\"Quick, eat it!\" said {{friend2}}. So they ate, and they ate, and they ate. {{family}} ate with a big spoon. {{friend1}} ate with a medium spoon. {{plush}} waved a pretend spoon like a conductor and ordered \"More teamwork! More chocolate!\"—which was no help at all with the pudding, but wonderful for morale.",
         "Finally the pudding stopped growing. There was chocolate on every nose, every elbow, and both of {{plush}}'s ears. {{family}} looked around and said, \"Well. That was dinner.\" And everyone agreed it was the best dinner they ever had."
       ],
       "improv": {
@@ -82,7 +82,7 @@
       "tone": "silly",
       "titleTemplate": "The hat that blew to {{setting}}",
       "paragraphs": [
-        "The wind grabbed {{family}}'s hat right off their head and threw it into the sky like a frisbee. \"My hat!\" cried {{family}}. So {{friend1}}, {{friend2}}, and {{plush}} ran after it, all the way to {{setting}}.",
+        "The wind grabbed {{family}}'s hat right off their head and threw it into the sky like a frisbee. \"My hat!\" cried {{family}}. {{plush}} took point like a fearless explorer, nose to the wind, and {{friend1}} and {{friend2}} charged after— all the way to {{setting}}.",
         "They looked left. No hat. They looked right. No hat. They looked UP— and there it was, sitting on top of a very tall bush, looking extremely pleased with itself.",
         "{{friend1}} reached up. Too short. {{friend2}} stood on tippy-toes. Still too short. They stacked {{plush}} on top of {{friend2}}'s head for extra height, which was a terrible idea but a wonderful try.",
         "Then the wind blew one more time— WHOOOOSH— and the hat landed right on {{plush}}'s head, perfectly. {{plush}} looked magnificent. {{family}} laughed so hard they sat down. And they all walked home, with {{plush}} wearing the hat like the fanciest explorer in the whole entire world."
@@ -133,7 +133,7 @@
       "titleTemplate": "Who keeps eating the bananas at {{setting}}?",
       "paragraphs": [
         "There were five bananas on the table at {{setting}} in the morning. By lunchtime there were four. By snack time there were three. \"WHO KEEPS EATING THE BANANAS?\" said {{family}}.",
-        "{{friend1}} said, \"Not me! Ask {{friend2}}.\" {{friend2}} said, \"Not me! Ask {{plush}}.\" {{plush}} said nothing, because {{plush}} is a stuffed animal. But {{plush}} was looking very suspicious.",
+        "{{friend1}} said, \"Not me! Ask {{friend2}}.\" {{friend2}} said, \"Not me! Ask {{plush}}.\" {{plush}} tugged {{family}}'s sleeve and pointed at the fruit bowl with the solemn face of a tiny detective who had cracked the case wide open.",
         "They set a trap: one banana on a plate with a little bell tied to it. They waited. And waited. And then— DING!— {{friend1}} and {{friend2}} jumped out and found… {{family}}, tiptoeing away with the banana and a very guilty face.",
         "\"I can't help it,\" said {{family}}. \"They're delicious.\" Everyone laughed until they wheezed. {{plush}} got a tiny banana sticker as a reward for being the only one who wasn't suspicious. And from that day on, they hid one banana just for {{family}}, because sharing a secret snack is the kindest kind of mystery."
       ],
@@ -141,7 +141,7 @@
         "titleTemplate": "Banana detective",
         "beats": [
           "Bananas keep disappearing at {{setting}} — someone notices.",
-          "Everyone blames the next person. {{plush}} looks suspicious.",
+          "Everyone blames the next person. {{plush}} points or tugs sleeves like a tiny detective.",
           "Set a trap with a bell. Wait dramatically.",
           "Surprise culprit — {{family}}! Laugh and share."
         ],
@@ -158,7 +158,7 @@
       "titleTemplate": "The enormous enormous puddle at {{setting}}",
       "paragraphs": [
         "It rained at {{setting}}. Not a lot. Just enough to make one puddle. But oh, what a puddle. It was enormous. It was ENORMOUS. It was the most enormous puddle anyone had ever seen in the history of puddles.",
-        "{{friend1}} walked around it. Took forever. {{friend2}} tried to jump over it. Didn't make it. {{plush}} just stared at it with wide, round eyes, which for {{plush}} meant \"That is one serious puddle.\"",
+        "{{friend1}} walked around it. Took forever. {{friend2}} tried to jump over it. Didn't make it. {{plush}} marched to the edge, thumped the ground twice with one paw as if to say, \"We cross this together,\" and struck a pose like the captain of a very serious expedition.",
         "{{family}} brought boots. Not enough. They brought an umbrella. Not helpful. They brought a very small boat made of a laundry basket and a stick— and {{friend1}} and {{friend2}} climbed in and sailed right across, with {{plush}} at the front like a fearless figurehead.",
         "On the other side, they planted a flag (a sock on a twig) and named the puddle Lake {{plush}}. When the sun came out and the puddle shrank to a drip, they kept the flag, because even small things deserve a name when they've been enormous."
       ],
@@ -166,7 +166,7 @@
         "titleTemplate": "The great puddle crossing",
         "beats": [
           "One enormous puddle appears at {{setting}} — describe it three ways.",
-          "Three attempts to cross: walk around, jump over, think bigger.",
+          "{{plush}} rallies the crew; three attempts to cross: walk around, jump over, think bigger.",
           "Build a silly boat (laundry basket, pillow raft, etc.) and sail across.",
           "Name the puddle. Plant a flag. Puddle shrinks. Keep the flag."
         ],
@@ -183,7 +183,7 @@
       "titleTemplate": "The royal parade for {{plush}} at {{setting}}",
       "paragraphs": [
         "{{friend1}} announced that today, at {{setting}}, {{plush}} would be crowned Royal Supreme Ruler of Everything Soft and Fluffy. {{friend2}} made a crown out of a paper plate. {{family}} played a trumpet sound with their mouth: \"Bah-bah-bah-BAAAH!\"",
-        "The parade began. {{friend1}} marched. {{friend2}} marched. {{family}} marched. They went around the table, past the couch, through the hallway, and back again. {{plush}} rode on a pillow and waved like royalty, which is to say, not at all, because stuffed animals are very dignified.",
+        "The parade began. {{friend1}} marched. {{friend2}} marched. {{family}} marched. They went around the table, past the couch, through the hallway, and back again. {{plush}} rode on a pillow like a parade float, waving both paws so hard the paper crown slid sideways—then {{plush}} caught it and set it straight like a total pro.",
         "Gifts were presented: a shiny button, a particularly round grape, and a drawing of {{plush}} wearing sunglasses. {{plush}} accepted each one with great seriousness. {{friend2}} read a royal speech that was just the word \"fluffy\" said eleven times.",
         "At the end of the parade, the Royal Supreme Ruler of Everything Soft and Fluffy fell sideways off the pillow and landed face-first on the rug. \"Long live the ruler!\" said {{friend1}}. Everyone cheered. And that was the most magnificent day {{setting}} had ever known."
       ],
@@ -208,7 +208,7 @@
       "titleTemplate": "The song that stuck at {{setting}}",
       "paragraphs": [
         "{{friend2}} hummed a little song at {{setting}}. Just three notes: doo dee dah. But then {{friend1}} couldn't stop humming it. Doo dee dah. Doo dee dah. Over and over like a friendly little brain worm.",
-        "It spread. {{family}} started humming it while making lunch. The spoon went doo dee dah against the pot. The fridge seemed to hum it too (though that might have just been the fridge). {{plush}} vibrated slightly, which everyone agreed counted as humming.",
+        "It spread. {{family}} started humming it while making lunch. The spoon went doo dee dah against the pot. The fridge seemed to hum it too (though that might have just been the fridge). {{plush}} started the harmony on purpose, like a conductor with no baton—just a squeaky heart—and everyone agreed that counted as humming.",
         "They tried to stop. They sang a different song. But by the second line, it turned into doo dee dah again. They tried silence. Someone's tummy rumbled in the exact rhythm of doo dee dah. Impossible.",
         "Finally {{friend1}} said, \"Maybe we just keep it.\" So they made up words: \"Doo dee dah, what a day, {{plush}} is great in every way.\" And they sang it all the way to bedtime, which wasn't a problem at all because it turned out to be the perfect lullaby."
       ],
@@ -234,7 +234,7 @@
       "paragraphs": [
         "{{friend1}} stacked a block at {{setting}}. {{friend2}} stacked another. Then another. And another. The tower grew taller than {{plush}}, taller than {{friend1}}, taller than {{friend2}} standing on tippy-toes.",
         "\"Higher!\" said {{friend1}}. {{family}} lifted {{friend2}} up to place one more block on top. The tower wobbled. It wiggled. It made a sound like \"eeeeee\" — or maybe that was everyone holding their breath.",
-        "{{plush}} was placed on the very tip-top, the bravest block of all. For one glorious second, the tower stood. Magnificent. Unbeatable. The tallest tower in the whole of {{setting}}.",
+        "{{plush}} had already scrambled up before anyone could argue—volunteered, paws up, captain of the Tip-Top Brigade—and was placed on the very top as the bravest block of all. For one glorious second, the tower stood. Magnificent. Unbeatable. The tallest tower in the whole of {{setting}}.",
         "Then it fell. CRASH-A-CLASH-A-BOOM. Blocks everywhere. {{plush}} bounced off a cushion and did a triple flip. Everyone stared. Then everyone laughed. \"AGAIN!\" shouted {{friend1}}. And they did it again, because the falling down is the whole entire point."
       ],
       "improv": {
@@ -242,7 +242,7 @@
         "beats": [
           "Stack something at {{setting}} — describe it getting taller and taller.",
           "One more piece. Hold your breath. The wobble.",
-          "Put {{plush}} on top. One glorious second of victory.",
+          "{{plush}} volunteers / is hoisted on top. One glorious second of victory.",
           "CRASH. Laugh. \"AGAIN!\""
         ],
         "branches": [
@@ -257,7 +257,7 @@
       "tone": "silly",
       "titleTemplate": "The very hungry backpack at {{setting}}",
       "paragraphs": [
-        "{{friend1}} packed a backpack for {{setting}}: one apple, one juice box, one blanket, and {{plush}} tucked in on top. But every time they opened it, something new had appeared inside. A sock. A crayon. A pinecone.",
+        "{{friend1}} packed a backpack for {{setting}}: one apple, one juice box, one blanket, and {{plush}} tucked in on top. {{plush}} peeked out of the zip and slipped in an extra crayon nobody had packed, eyes shining with adventure. But every time they opened it, something new had appeared inside. A sock. A crayon. A pinecone.",
         "\"Who put this in here?\" said {{friend1}}. \"Not me,\" said {{friend2}}. \"Not me,\" said {{family}}. They all looked at {{plush}}, who stared back with the blank, innocent face of someone who definitely did it.",
         "They opened the backpack again: a rubber duck, a glove, and a leaf the size of a dinner plate. \"This backpack is EATING the neighborhood!\" said {{friend2}}. {{family}} shook it gently and a marble rolled out, looking embarrassed.",
         "By the time they got home, the backpack was stuffed with treasures nobody remembered packing. They emptied everything onto the floor and marveled at the collection. {{plush}} sat in the middle, looking extremely proud. \"You,\" said {{friend1}}, pointing, \"are the sneakiest collector in the whole world.\" And {{plush}} did not deny it."
@@ -283,7 +283,7 @@
       "titleTemplate": "Bedtime for {{family}} at {{setting}}",
       "paragraphs": [
         "{{friend1}} decided it was time for {{family}} to go to bed. \"Brush your teeth,\" said {{friend1}} in a very serious voice. \"Did you wash behind your ears?\" said {{friend2}}, wagging a finger just like a grown-up.",
-        "{{family}} giggled and played along. They brushed their teeth with a pretend toothbrush (a carrot). They washed their face with a pretend cloth (a sock). {{plush}} supervised from a chair, nodding firmly at every step.",
+        "{{family}} giggled and played along. They brushed their teeth with a pretend toothbrush (a carrot). They washed their face with a pretend cloth (a sock). {{plush}} supervised from a chair with a tiny imaginary clipboard, ticking off each step with a pom-pom paw and whispering, \"Quality bedtime, ten out of ten.\"",
         "\"Now into bed,\" said {{friend1}}, tucking {{family}} under a very small blanket that only covered their knees. \"One story,\" begged {{family}}. \"That's what they ALL say,\" said {{friend2}}, and everyone collapsed laughing.",
         "{{friend1}} told a story about a family who loved each other so much that bedtime took an hour because of all the hugs. Which is exactly what happened next. {{plush}} fell asleep in the middle of the giggling, and {{family}} whispered, \"Best bedtime ever.\" And it was."
       ],
@@ -291,13 +291,38 @@
         "titleTemplate": "Grown-up bedtime",
         "beats": [
           "{{friend1}} and {{friend2}} boss {{family}} through a bedtime routine.",
-          "{{family}} plays along with silly pretend items.",
+          "{{family}} plays along with silly pretend items. {{plush}} coaches or judges each step.",
           "Tuck {{family}} in. They beg for one more story.",
           "Story becomes real — hugs all around. {{plush}} sleeps first."
         ],
         "branches": [
           "If they want \"more\": {{family}} keeps asking for water, just like kids do.",
           "If they want calmer: everyone tucks each other in at the same time."
+        ]
+      }
+    },
+    {
+      "id": "spine-013",
+      "tags": ["indoor", "pretend", "plush-led"],
+      "tone": "silly",
+      "titleTemplate": "{{plush}}'s treasure hunt at {{setting}}",
+      "paragraphs": [
+        "{{friend1}} was bored at {{setting}}. {{plush}} tapped the table three times, then pointed under the couch, then held up two fingers—clear as could be: Treasure Hunt, start now.",
+        "{{friend2}} made a map on a napkin with big X marks. {{family}} humored them beautifully, hiding a shiny button, a sticker, and a grape under pillows and behind books. {{plush}} led the way, crawling, peeking, whispering \"warmer… colder…\" with {{friend1}} translating every squeak.",
+        "The last clue was taped to {{plush}}'s own foot. Everyone collapsed laughing. {{plush}} struck a heroic pose with the sticker stuck to their chest like a medal. {{friend1}} said, \"Best captain ever.\" And {{plush}} absolutely agreed.",
+        "They split the grape three ways ({{plush}} got a pretend bite). They stuck the button in a treasure box made from a shoebox. And they promised {{plush}} could plan the next adventure tomorrow—because every crew needs a brave, kind, slightly bossy stuffed friend in charge."
+      ],
+      "improv": {
+        "titleTemplate": "Plush-led treasure hunt",
+        "beats": [
+          "{{plush}} signals a game at {{setting}}—map, taps, or secret winks.",
+          "{{family}} hides three silly treasures. {{plush}} guides the search.",
+          "Last clue is on {{plush}}—big laugh. Medal or crown moment.",
+          "Share the loot. Promise {{plush}} the next adventure plan."
+        ],
+        "branches": [
+          "If they want \"more\": {{plush}} issues pirate orders in rhyme.",
+          "If they want calmer: one treasure only, found in plain sight."
         ]
       }
     }

@@ -22,6 +22,11 @@ const VARIETY_GROUNDING_AND_SHAPE = `Variety and plot shape:
 - Ground the story in the named characters and the stated setting. Do not introduce major new locations or props that contradict that setting.
 - One clear gentle cause leads to a small escalation, then a cozy fix. Do not drop in unrelated magic objects or random twists unless they follow naturally from what already happened.`;
 
+const PLUSH_CO_STAR = `Plush friends (from the cast line “Plush friends”):
+- They are full co-stars—not background props or silent lumps. Give them the spirit of brave, kind, loyal toys in Toy Story: adventurous in a gentle way, warm-hearted, playful, and rooting for the family.
+- Show them **participating**: noticing something first, suggesting a silly plan, cheering someone on, offering comfort, leading a pretend game, saving the day in a tiny cozy way, or speaking through a child’s voice for them—so long as it stays sweet and safe.
+- They should matter to the plot across several moments, not just one cameo. No scary or uncanny “alive toy” horror; keep the magic soft, friendly, and bedtime-safe.`;
+
 function buildGeminiSystemInstruction(mode: OutputMode): string {
   const formatRule =
     mode === "improv"
@@ -32,6 +37,7 @@ function buildGeminiSystemInstruction(mode: OutputMode): string {
     SAFETY_RULES,
     READ_ALOUD_STYLE,
     VARIETY_GROUNDING_AND_SHAPE,
+    PLUSH_CO_STAR,
     formatRule,
   ].join("\n\n");
 }
@@ -42,7 +48,9 @@ function buildGeminiUserMessage(ctx: FillContext, mode: OutputMode): string {
 - Second friend or rest of friends: ${ctx.friend2}
 - Family member: ${ctx.family}
 - Plush friends: ${ctx.plush}
-- Setting: ${ctx.setting}`;
+- Setting: ${ctx.setting}
+
+Plush participation: the plush friend(s) above must drive or shape several beats—not only be carried or watched. Treat them as kind, brave, playful co-adventurers (Toy Story–style warmth).`;
 
   if (mode === "improv") {
     return `${castBlock}
@@ -64,7 +72,7 @@ Do not add any lines before TITLE:.`;
 
   return `${castBlock}
 
-Write one original short adventure story using the cast and setting.
+Write one original short adventure story using the cast and setting. The plush friend(s) should speak (via a child’s voice if you like), gesture, plan, cheer, or help solve the tiny problem in more than one scene.
 
 Mishap (important): pick something social, verbal, or lightly logistical—not a story about things wobbling, tilting, or nearly falling. Examples of good directions: silly phrase everyone copies, snack mix-up, hiding-game confusion, wrong song or wrong door, echo game, crayon that rolled away.
 
