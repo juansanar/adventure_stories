@@ -28,7 +28,15 @@ Large models are **gitignored**; see [`public/models/README.md`](public/models/R
 
 ## Gemini (cloud) setup
 
-This mode sends your generated **prompt** to the backend endpoint `POST /api/generate`, which calls the Gemini Developer API. The API key is stored server-side (for example, in Cloud Run Secret Manager).
+This mode sends **system** and **user** messages built in the app ([`src/lib/llmPrompt.ts`](src/lib/llmPrompt.ts)) to the backend endpoint `POST /api/generate`, which calls the Gemini Developer API with `config.systemInstruction` plus the user turn. The API key is stored server-side (for example, in Cloud Run Secret Manager).
+
+**`POST /api/generate` body (JSON):**
+
+| Field | Required | Purpose |
+|-------|----------|---------|
+| `userMessage` | Yes (unless using legacy `prompt`) | User turn: cast, setting, and task (story or improv format). |
+| `systemInstruction` | No | Safety, style, grounding, and output rules. Omitted when empty. |
+| `prompt` | Legacy | If `userMessage` is empty, the server uses `prompt` as the only content and does not set a system instruction. |
 
 ### Local dev
 
@@ -114,4 +122,4 @@ If you use on-device AI in production, **host the model** where bandwidth allows
 
 ## Privacy
 
-Template mode: names stay in the browser unless you use **Copy link** (encoded hash). On-device AI: the model runs locally. **Gemini (cloud)** sends the prompt to your server and then to Google’s API; see the in-app footer when that mode is selected.
+Template mode: names stay in the browser unless you use **Copy link** (encoded hash). On-device AI: the model runs locally. **Gemini (cloud)** sends the generated system and user text to your server and then to Google’s API; see the in-app footer when that mode is selected.
