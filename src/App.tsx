@@ -20,7 +20,10 @@ import {
   parseAiImprov,
   parseAiStory,
 } from "./lib/aiOutputParse";
-import { buildLlmPrompt } from "./lib/llmPrompt";
+import {
+  buildGemmaOnDevicePrompt,
+  buildGeminiCloudPrompt,
+} from "./lib/llmPrompt";
 import {
   generateWithLlm,
   getLlmInference,
@@ -372,7 +375,7 @@ export default function App() {
     await yieldToUi();
     try {
       const llm = await getLlmInference(getConfiguredModelPath());
-      const prompt = buildLlmPrompt(fillCtx, mode);
+      const prompt = buildGemmaOnDevicePrompt(fillCtx, mode);
       await yieldToUi();
       const fullText = await generateWithLlm(llm, prompt, (partial) => {
         if (partial) {
@@ -444,7 +447,7 @@ export default function App() {
     await yieldToUi();
 
     try {
-      const prompt = buildLlmPrompt(fillCtx, mode);
+      const prompt = buildGeminiCloudPrompt(fillCtx, mode);
       const resp = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
