@@ -12,12 +12,13 @@ Strict rules:
 const READ_ALOUD_STYLE = `Read-aloud style (in the spirit of Robert Munsch or Julia Donaldson):
 - Strong rhythm and repetition: a catchphrase, refrain, or pattern children can predict and join.
 - Clear, speakable dialogue; a small problem that grows a bit silly or surprising, then resolves cozily.
-- Physical, playful humor is welcome when it stays gentle and fits the safety rules above.
-- Stories should have substantial variety and creativity. They should resemble the style of common and popular children stories from known authors (e.g. Robert Munsch, Julia Donaldson, Dr. Seuss, etc.).`;
+- Prefer humor from dialogue, wordplay, silly refrains, tiny social mix-ups, or gentle surprises. Do not lean on slapstick about shaking, wobbling, tilting, swaying, buckling, or things nearly falling—that default is overused and tiresome.
+- Stories should feel varied and original in spirit, not like the same physical-gag template every time.`;
 
 const VARIETY_GROUNDING_AND_SHAPE = `Variety and plot shape:
-- Invent one fresh, specific tiny mishap that fits the cast and setting. Do not reuse the same physical gag every time.
-- Avoid stale “unstable structure” centerpieces unless the user’s stated setting clearly includes them: e.g. wobbly or teetering arches, bridges, towers, or stacks of objects. Prefer mix-ups about turns, funny sounds, small lost items, gentle misunderstandings, or something lightly stuck or tangled.
+- Invent one fresh, specific tiny mishap that fits the cast and setting.
+- Hard rule for this story: do not use the words "wobble", "wobbly", or "wobbling" (or close variants). Do not center the plot on unstable stacks, leaning towers, unsteady arches or bridges, or furniture or objects that shake until they settle—unless the user’s setting explicitly names that kind of place (e.g. a balance game or wobble toy called out in the setting).
+- Prefer instead: wrong order or wrong button, a funny repeated phrase, a small lost item, a gentle misunderstanding, a hat or costume mix-up, a “whose turn” confusion, a silly sound or rhyme loop, or something lightly stuck or tangled.
 - Ground the story in the named characters and the stated setting. Do not introduce major new locations or props that contradict that setting.
 - One clear gentle cause leads to a small escalation, then a cozy fix. Do not drop in unrelated magic objects or random twists unless they follow naturally from what already happened.`;
 
@@ -25,7 +26,7 @@ function buildGeminiSystemInstruction(mode: OutputMode): string {
   const formatRule =
     mode === "improv"
       ? `The user message asks for a labeled improv outline. Follow the user’s output format exactly (plain text, no markdown or code fences).`
-      : `The user message asks for a read-aloud story starting with TITLE: on its own line, then a blank line, then body paragraphs. Follow that format exactly. Do not use markdown headings or bullet lists in the story body.`;
+      : `The user message asks for a read-aloud story. The very first line of your reply must be only \`TITLE: <short title>\` (literal word TITLE, colon, space, then a real title — never story prose on that line). Line 2 must be blank. Then the story paragraphs. Do not use markdown headings or bullet lists in the story body.`;
 
   return [
     SAFETY_RULES,
@@ -48,8 +49,10 @@ function buildGeminiUserMessage(ctx: FillContext, mode: OutputMode): string {
 
 Give a short improv outline for a parent to riff on live.
 
-Output in exactly this labeled format (no markdown, no code fences):
-TITLE: (one line)
+Avoid the tired “wobbly / tilting / nearly falling” physical gag; use fresh tiny mix-ups (turns, sounds, misunderstandings, small lost things) across the beats.
+
+Output in exactly this labeled format (no markdown, no code fences). Line 1 must be a real title after TITLE:, not parentheses or instructions:
+TITLE: <short title for this kit>
 BEAT1: (one short sentence)
 BEAT2: (one short sentence)
 BEAT3: (one short sentence)
@@ -63,17 +66,19 @@ Do not add any lines before TITLE:.`;
 
 Write one original short adventure story using the cast and setting.
 
+Mishap (important): pick something social, verbal, or lightly logistical—not a story about things wobbling, tilting, or nearly falling. Examples of good directions: silly phrase everyone copies, snack mix-up, hiding-game confusion, wrong song or wrong door, echo game, crayon that rolled away.
+
 Length (important):
 - After TITLE, the story body should be about 250–350 words for read-aloud (several minutes aloud).
 - Write 4–5 short paragraphs (not 1–2), each a few sentences, separated by blank lines.
 - Do not stop after TITLE alone, and do not answer with only one sentence for the whole story.
 
-Output format:
-TITLE: (one line only)
-(then one blank line)
-(then the full story paragraphs as above)
+Output format (required — do not copy the example title; invent your own):
+Line 1: TITLE: <your short title here>   (example shape only: TITLE: The Pancake That Hiccuped)
+Line 2: (blank)
+Line 3 onward: story paragraphs as above
 
-Do not use markdown headings or bullet lists in the story body. Do not add text before TITLE:.`;
+The first line must be the TITLE line only — do not start with "Once upon" or any story sentence before TITLE:. Do not use markdown headings or bullet lists in the story body.`;
 }
 
 export type GeminiCloudMessages = {

@@ -12,25 +12,46 @@ export function normalizeLlmText(raw: unknown): string {
     .trim();
 }
 
-/** Parse model output that starts with TITLE: ... */
+/** True when the model echoed prompt placeholders instead of a real title. */
+function isPlaceholderAiTitle(s: string): boolean {
+  const t = s.replace(/\*+/g, "").trim().toLowerCase();
+  if (!t) return true;
+  const placeholders = new Set([
+    "(one line only)",
+    "(one line)",
+    "one line only",
+    "<your title here>",
+    "your title here",
+    "short story name",
+    "<short title>",
+  ]);
+  return placeholders.has(t);
+}
+
+/**
+ * Match `TITLE: …` at the start of a line (case-insensitive on the word TITLE).
+ * Uses the first such line in the text.
+ */
+function matchTitleLine(cleaned: string): RegExpMatchArray | null {
+  return cleaned.match(/^title:\s*(.+)$/im);
+}
+
+/** Parse model output that should start with TITLE: … */
 export function parseAiStory(raw: string): { title: string; body: string } {
   const cleaned = normalizeLlmText(raw);
-  const titleMatch = cleaned.match(/^TITLE:\s*(.+)$/im);
-  if (titleMatch) {
+  const titleMatch = matchTitleLine(cleaned);
+  if (titleMatch && titleMatch.index !== undefined) {
+    const idx = titleMatch.index;
+    const matchedLine = titleMatch[0];
     const title = titleMatch[1].trim();
-    const idx = cleaned.indexOf(titleMatch[0]);
-    const after = cleaned.slice(idx + titleMatch[0].length).trim();
-    return { title, body: after || title };
+    const after = cleaned.slice(idx + matchedLine.length).trim();
+    if (title && !isPlaceholderAiTitle(title)) {
+      return { title, body: after || title };
+    }
+    const sansTitleLine = `${cleaned.slice(0, idx)}${cleaned.slice(idx + matchedLine.length)}`.trim();
+    return { title: "Story", body: after || sansTitleLine };
   }
-  const lines = cleaned.split("\n").map((l) => l.trim());
-  const nonEmpty = lines.filter(Boolean);
-  if (nonEmpty.length <= 1) {
-    return { title: "Story", body: cleaned };
-  }
-  return {
-    title: nonEmpty[0],
-    body: nonEmpty.slice(1).join("\n\n"),
-  };
+  return { title: "Story", body: cleaned };
 }
 
 export function parseAiImprov(raw: string): {
@@ -39,15 +60,21 @@ export function parseAiImprov(raw: string): {
   branches: string[];
 } {
   const norm = normalizeLlmText(raw);
-  const titleMatch = norm.match(/^TITLE:\s*(.+)$/im);
-  const title = titleMatch ? titleMatch[1].trim() : "Improv kit";
+  const titleMatch = matchTitleLine(norm);
+  let title = "Improv kit";
+  if (titleMatch && titleMatch.index !== undefined) {
+    const candidate = titleMatch[1].trim();
+    if (candidate && !isPlaceholderAiTitle(candidate)) {
+      title = candidate;
+    }
+  }
   const beats: string[] = [];
   for (let i = 1; i <= 8; i++) {
-    const re = new RegExp(`^BEAT${i}:\\s*(.+)$`, "im");
+    const re = new RegExp(`^beat${i}:\\s*(.+)$`, "im");
     const m = norm.match(re);
     if (m) beats.push(m[1].trim());
   }
-  const branchM = norm.match(/^BRANCH:\s*(.+)$/im);
+  const branchM = norm.match(/^branch:\s*(.+)$/im);
   const branches = branchM ? [branchM[1].trim()] : [];
   if (beats.length === 0) {
     return {

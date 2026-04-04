@@ -458,8 +458,17 @@ export default function App() {
       });
 
       if (!resp.ok) {
-        const msg = await resp.text().catch(() => "");
-        throw new Error(`Gemini request failed (${resp.status}): ${msg}`);
+        const raw = await resp.text().catch(() => "");
+        let detail = raw.trim() || "(empty response body)";
+        try {
+          const j = JSON.parse(raw) as { error?: string };
+          if (typeof j?.error === "string" && j.error.trim()) {
+            detail = j.error.trim();
+          }
+        } catch {
+          /* keep detail as raw text */
+        }
+        throw new Error(`Gemini request failed (${resp.status}): ${detail}`);
       }
 
       const data = (await resp.json().catch(() => ({}))) as
@@ -507,7 +516,14 @@ export default function App() {
         setFeedback(parseMsg);
       }
     } catch (e) {
-      const msg = e instanceof Error ? e.message : String(e);
+      let msg = e instanceof Error ? e.message : String(e);
+      const looksLikeNetwork =
+        e instanceof TypeError &&
+        (/failed to fetch/i.test(msg) || /networkerror/i.test(msg));
+      if (looksLikeNetwork) {
+        msg =
+          "Could not reach the story API. For local testing, run the backend (default port 8080) while Vite is running — e.g. GEMINI_API_KEY=your_key npm run dev:with-api. If 8080 is busy, use the same API_PORT for both, e.g. API_PORT=8081 GEMINI_API_KEY=your_key npm run dev:with-api.";
+      }
       setLlmError(msg);
       setFeedback(msg);
     } finally {
