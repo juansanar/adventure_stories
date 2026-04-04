@@ -17,17 +17,20 @@ const READ_ALOUD_STYLE = `Read-aloud style (in the spirit of Robert Munsch or Ju
 
 const STORY_PROBLEM_DIVERSITY = `Problem choice: invent one fresh, specific tiny mishap that fits the cast and setting. Avoid repeating the “unstable stack” pattern across stories.`;
 
+/** Gemma on-device (MediaPipe) expects chat-style turn markers in the prompt string. */
 function wrapGemmaTurn(userContent: string): string {
   return `<start_of_turn>user\n${userContent}<end_of_turn>\n<start_of_turn>model\n`;
 }
 
-export function buildLlmPrompt(ctx: FillContext, mode: OutputMode): string {
+function buildLlmUserContent(ctx: FillContext, mode: OutputMode): string {
   const castBlock = `Cast (use these names and roles as given):
 - First friend or group lead: ${ctx.friend1}
 - Second friend or rest of friends: ${ctx.friend2}
 - Family member: ${ctx.family}
 - Plush friends: ${ctx.plush}
 - Setting: ${ctx.setting}`;
+
+  const sharedPrefix = `${SAFETY_RULES}\n\n${READ_ALOUD_STYLE}\n\n${STORY_PROBLEM_DIVERSITY}\n\n${castBlock}\n\n`;
 
   if (mode === "improv") {
     const task = `Give a short improv outline for a parent to riff on live.
@@ -41,9 +44,7 @@ BEAT4: (one short sentence)
 BRANCH: (one line: a "if they want sillier" optional twist)
 
 Do not add any lines before TITLE:.`;
-    return wrapGemmaTurn(
-      `${SAFETY_RULES}\n\n${READ_ALOUD_STYLE}\n\n${STORY_PROBLEM_DIVERSITY}\n\n${castBlock}\n\n${task}`,
-    );
+    return `${sharedPrefix}${task}`;
   }
 
   const task = `Write one original short adventure story using the cast and setting.
@@ -59,7 +60,21 @@ TITLE: (one line only)
 (then the full story paragraphs as above)
 
 Do not use markdown headings or bullet lists in the story body. Do not add text before TITLE:.`;
-  return wrapGemmaTurn(
-    `${SAFETY_RULES}\n\n${READ_ALOUD_STYLE}\n\n${STORY_PROBLEM_DIVERSITY}\n\n${castBlock}\n\n${task}`,
-  );
+  return `${sharedPrefix}${task}`;
+}
+
+/** Prompt for MediaPipe Gemma on-device: includes `<start_of_turn>` markers the local model expects. */
+export function buildGemmaOnDevicePrompt(
+  ctx: FillContext,
+  mode: OutputMode,
+): string {
+  return wrapGemmaTurn(buildLlmUserContent(ctx, mode));
+}
+
+/** Plain user message for Gemini API (cloud). Do not wrap with Gemma turn tokens. */
+export function buildGeminiCloudPrompt(
+  ctx: FillContext,
+  mode: OutputMode,
+): string {
+  return buildLlmUserContent(ctx, mode);
 }
