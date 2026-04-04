@@ -8,7 +8,10 @@ A small web app that fills **gentle, short adventure stories** (or **improv kits
 
 ## Quick start
 
+**Run all `npm` commands from the repository root**—the directory that contains this project’s `package.json` (e.g. `adventure_stories`), not your home folder. If npm looks for `/Users/you/package.json` or says **ENOENT** / **Could not read package.json**, your shell is in the wrong directory; `cd` into the clone first.
+
 ```bash
+cd /path/to/adventure_stories   # example: cd ~/GitHub/adventure_stories
 npm install
 npm run dev
 ```
@@ -63,6 +66,7 @@ Then:
 
 | Symptom | Likely cause |
 |---------|----------------|
+| **`ENOENT` / Could not read `package.json`** (path under your **home** directory, not the repo) | You ran `npm` outside the project. `cd` to the folder that contains **`adventure_stories/package.json`**, then run the command again. |
 | **Failed to fetch** | API not running, or **API_PORT** mismatch between Vite and server. |
 | **500** / “Missing **GEMINI_API_KEY**” | Server started without the key; put `GEMINI_API_KEY=...` on the same line as `npm run dev:with-api` or `npm run server`. |
 | Empty or odd model output | Try another **`GEMINI_MODEL`** (see below). |
